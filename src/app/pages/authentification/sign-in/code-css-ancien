@@ -1,0 +1,36 @@
+.page-container {
+    position: relative;
+    width: 1920px;
+    height: 1597px;
+    
+    background: #FFFFFF;
+}
+
+.left-section {
+  flex: 1;
+  background-color: #ffffff; /* Couleur ou image de fond pour le côté gauche */
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 50px; /* Ajustez pour éloigner le conteneur du haut */
+  padding-right: 50px;
+  background-color: #ffffff; /* Couleur ou image de fond pour le côté droit */
+}
+
+.circle-image {
+    position: absolute;
+    width: 1231px; /* Largeur du cercle */
+    height: 1231px; /* Hauteur du cercle */
+    left: 187px; /* Position gauche */
+    top: 198px; /* Position haut */
+    background: url('../../../assets/moroccan-door.jpg') no-repeat center center; /* Chemin vers l'image */
+    background-size: cover; /* Assure que l'image couvre tout le cercle */
+    box-shadow: -5px 11px 22.7px 6px rgba(0, 0, 0, 0.15); /* Ombre */
+    border-radius: 50%; /* Forme circulaire */
+    z-index: 1; /* Assure que l'image est visible */
+  }
+  

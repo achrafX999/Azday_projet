@@ -1,0 +1,68 @@
+.page-container {
+    position: relative;
+    
+    background: #FFFFFF;
+}
+
+/* Conteneur pour le logo */
+.logo-container {
+  position: absolute;
+  top: 20px; /* Distance par rapport au haut */
+  left: 20px; /* Distance par rapport à la gauche */
+  z-index: 10; /* Assure que le logo reste au-dessus des autres éléments */
+}
+
+/* Image du logo */
+.logo-container img {
+  width: 120px; /* Ajustez la taille du logo */
+  height: auto; /* Conserve les proportions */
+}
+
+.logo-image {
+  position: absolute;
+  top: 20px; /* Distance par rapport au haut */
+  left: 70px; /* Distance par rapport à la gauche */
+  width: 180px; /* Ajustez la largeur de l'image */
+  height: 160px; /* Ajustez la hauteur de l'image */
+  background: url('../../../../assets/azday-logo.png') no-repeat center center; /* Image en arrière-plan */
+  background-size: contain; /* S'assure que l'image s'adapte au conteneur */
+  z-index: 10; /* S'assure que l'image reste visible */
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  height: 100vh; /* S'assure que le conteneur prend toute la hauteur de la fenêtre */
+}
+
+.circle-image {
+        /* Ellipse 152 */
+    
+    position: absolute;
+    width: 710px; /* Réduction de la largeur */
+    height: 660px; /* Réduction de la hauteur */
+    left: 53%; /* Ajustement de la position gauche pour centrer */
+    top: 440px; /* Ajustement de la position verticale */
+    background-size: cover; /* Maintient l'image bien adaptée */
+    background: url('../../../../assets/moroccan-door.jpg');
+    box-shadow: -5px 11px 22.7px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 50%; /* Forme circulaire */
+    background-size: cover; /* Assure que l'image couvre tout le cercle */
+    transform: translate(-50%, -50%);
+    
+  }
+  
+  /* Conteneur pour la légende du logo */
+.logo-caption {
+  position: absolute;
+  top: 130px; /* Ajustez pour placer la phrase sous le logo */
+  left: 75px; /* Aligné avec le logo */
+  font-size: 1rem; /* Taille de la police */
+  color: #333; /* Couleur du texte */
+  font-weight: bold; /* Texte en gras */
+  z-index: 10; /* S'assure que le texte reste visible */
+  max-width: 250px; /* Limite la largeur pour rester aligné */
+  text-align: left; /* Aligne le texte à gauche */
+}

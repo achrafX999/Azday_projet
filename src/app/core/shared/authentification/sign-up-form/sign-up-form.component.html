@@ -1,0 +1,86 @@
+<div class="sign-in-form-container p-4">
+  <h2 class="text-left-title text-center mb-4">Get started absolutely free</h2>
+  
+
+  <!-- Champ First Name et Last Name -->
+  <div class="d-flex gap-3">
+    <!-- First Name -->
+    <div class="form-group mb-3 floating-label-group flex-grow-1">
+      <input type="text" id="firstName" class="form-control floating-input" placeholder=" " />
+      <label for="firstName" class="floating-label">
+        <i class="fas fa-user"></i> First Name
+      </label>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group mb-3 floating-label-group flex-grow-1">
+      <input type="text" id="lastName" class="form-control floating-input" placeholder=" " />
+      <label for="lastName" class="floating-label">
+        Last Name
+      </label>
+    </div>
+  </div>
+
+  <!-- Champ Email -->
+  <div class="form-group mb-3 floating-label-group">
+    <input type="email" id="email" class="form-control floating-input" placeholder=" " />
+    <label for="email" class="floating-label">
+      <i class="fas fa-envelope"></i> Email
+    </label>
+  </div>
+
+
+  <!-- Champ Mot de Passe -->
+  <div class="form-group mb-3 floating-label-group">
+    <input type="password" id="password" class="form-control floating-input" placeholder=" " />
+    <label for="password" class="floating-label">
+      <i class="fas fa-lock"></i> Password
+    </label>
+  </div>
+
+  <!-- Champ Mot de Passe -->
+  <div class="form-group mb-3 floating-label-group">
+    <input type="password" id="password" class="form-control floating-input" placeholder=" " />
+    <label for="password" class="floating-label">
+      <i class="fas fa-lock"></i> Confirm assword
+    </label>
+  </div>
+
+  <p class="agreement-text text-center">
+    By signing up, I agree the 
+    <a href="#" class="terms-link">Terms of Service</a> and 
+    <a href="#" class="privacy-link">Privacy Policy</a>.
+  </p>
+
+  <!-- Bouton d'Inscription -->
+  <button type="button" class="btn custom-btn w-100 mb-3">Sign up</button>
+
+  <br /> <br />
+  <!-- Ligne de Séparation -->
+  <div class="text-center separator mb-3">
+    <div class="line"></div>
+    <span class="or-text">Or</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Options de Connexion Sociales -->
+  <div class="text-center mb-3">
+    <p class="continue-with-text">Continue with</p>
+    <div class="d-flex justify-content-center gap-4">
+      <a href="#" class="social-icon">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#" class="social-icon">
+        <i class="fab fa-apple"></i>
+      </a>
+      <a href="#" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Lien pour se connecter -->
+  <div class="text-center">
+    <p>Already have an account? <a [routerLink]="'/sign-in'" class="custom-link text-decoration-none">Sign in</a></p>
+  </div>
+</div>

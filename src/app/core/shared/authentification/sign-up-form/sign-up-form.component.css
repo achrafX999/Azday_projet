@@ -1,0 +1,220 @@
+/* General Styles */
+.sign-in-form-container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    position: relative; /* Assure que les ajustements de position fonctionnent */
+    top: -22px; /* Déplace le formulaire 20px vers le haut */
+    transform: translateY(-20px); /* Option alternative pour un déplacement fluide */
+  }
+  
+  .text-left-title {
+    text-align: left;
+    margin-left: 0px;
+  }
+  
+  .sign-in-form-container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .sign-in-form-container .btn {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .sign-in-form-container hr {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    flex-grow: 1;
+  }
+  
+  .sign-in-form-container span {
+    margin: 0 10px;
+    color: #888;
+    font-weight: bold;
+  }
+  
+  /* Floating Label Styles */
+  .floating-label-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .floating-input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    outline: none;
+    background: none;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .floating-input:focus {
+    border-bottom: 2px solid #28a745;
+  }
+  
+  .floating-label {
+    position: absolute;
+    top: 50%;
+    left: 35px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #aaa;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .floating-input:focus ~ .floating-label,
+  .floating-input:not(:placeholder-shown) ~ .floating-label {
+    top: 0;
+    left: 35px;
+    font-size: 0.8rem;
+    color: #28a745;
+  }
+  
+  /* Circular Checkbox Styles */
+  .rounded-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; /* Makes the checkbox circular */
+    border: 2px solid #ebf9ee; /* Green border to match the theme */
+    appearance: none; /* Removes the default checkbox styling */
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    background-color: rgb(241, 240, 240); /* Background color of the checkbox */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .rounded-checkbox:checked {
+    background-color: #28a745; /* Green fill when checked */
+    border-color: #28a745; /* Maintains the green border */
+  }
+  
+  .rounded-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Adds focus effect */
+  }
+  
+  
+  
+  /* Custom Button Styles */
+  .custom-btn {
+    background-color: #a4e01f; /* Lime green color from the image */
+    color: #ffffff; /* White text for contrast */
+    border: 2px solid #a4e01f; /* Border matches background color */
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 30px; /* Rounded corners */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+  }
+  
+  .custom-btn:hover {
+    background-color: #8ccc1b; /* Slightly darker shade on hover */
+    border-color: #8ccc1b; /* Matches hover background */
+    transform: scale(1.05); /* Slight scaling effect */
+  }
+  
+  .custom-btn:active {
+    background-color: #78b516; /* Darker shade when pressed */
+    border-color: #78b516;
+    transform: scale(0.98); /* Slight shrink effect */
+  }
+  
+  
+  /* Separator Styles */
+  .separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Spacing between lines and text */
+  }
+  
+  .separator .line {
+    flex-grow: 1; /* Ensures the line stretches */
+    height: 2px; /* Thickness of the line */
+    background-color: #a4e01f; /* Lime green color */
+  }
+  
+  .separator .or-text {
+    font-size: 1rem; /* Size of the text */
+    font-weight: bold; /* Bold text */
+    color: #a4e01f; /* Matches the line color */
+  }
+  
+  /* Custom Link Styles */
+  .custom-link {
+    color: #a4e01f; /* La même couleur que le bouton */
+    font-weight: 600; /* Optionnel : pour correspondre au style du bouton */
+    transition: color 0.3s ease-in-out; /* Animation pour effet au survol */
+  }
+  
+  .custom-link:hover {
+    color: #8ccc1b; /* Couleur légèrement plus sombre au survol */
+    text-decoration: underline; /* Ajoute une décoration au survol */
+  }
+  
+  
+  /* Text above the social icons */
+  .continue-with-text {
+    font-size: 1rem;
+    color: #666; /* Soft gray color */
+    margin-bottom: 15px;
+  }
+  
+  /* Social Icon Styling */
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Makes the icon circular */
+    background-color: #1a1a1a; /* Dark background for the icons */
+    color: #fff; /* Icon color */
+    font-size: 1.5rem; /* Icon size */
+    text-decoration: none; /* Removes underline */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  /* Hover Effect */
+  .social-icon:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+    background-color: #333; /* Lighter shade of dark on hover */
+  }
+  
+  
+  /* Texte de l'accord */
+.agreement-text {
+    font-size: 0.7rem; /* Ajuste la taille de la police */
+    color: #666; /* Gris doux */
+    margin-top: -10px; /* Réduit l'espace au-dessus */
+    margin-bottom: 20px; /* Espace au-dessous */
+    line-height: 1.5; /* Hauteur de ligne pour améliorer la lisibilité */
+  }
+  
+  /* Lien dans la phrase */
+  .agreement-text .terms-link,
+  .agreement-text .privacy-link {
+    color: #28a745; /* Vert pour correspondre au bouton */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: 600; /* Texte légèrement en gras */
+  }
+  
+  /* Hover effect pour les liens */
+  .agreement-text .terms-link:hover,
+  .agreement-text .privacy-link:hover {
+    text-decoration: underline; /* Ajoute une décoration au survol */
+    color: #28a745; /* Couleur légèrement plus foncée */
+  }
+  
+
+  

@@ -1,0 +1,25 @@
+.rounded-container {
+    /* Rectangle 8 */
+
+position: absolute;
+width: 643px;
+height: 100%;
+right: 0px;
+top: 0px;
+
+background: #FFFFFF;
+box-shadow: -20px 2px 60px 12px rgba(0, 0, 0, 0.2);
+border-radius: 400px 400px 23px 23px;
+
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligner en haut par défaut */
+    align-items: center;
+    padding-top: 180px; /* Ajustez cette valeur pour baisser le formulaire */
+    height: 100%; /* Prend toute la hauteur du conteneur arrondi */
+    width: 100%; /* Prend toute la largeur du conteneur arrondi */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+}

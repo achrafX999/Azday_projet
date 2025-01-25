@@ -1,0 +1,4 @@
+<div class="rounded-container">
+    <ng-content></ng-content>
+  </div>
+  
