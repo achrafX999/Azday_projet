@@ -6,17 +6,20 @@ import { SignUpComponent } from '../../pages/authentification/sign-up/sign-up.co
 import { SignUpFormComponent } from './authentification/sign-up-form/sign-up-form.component';
 import { RouterLink } from '@angular/router';
 import { AppRoutingModule } from '../../app-routing.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     RoundedContainerComponent,
     SignInFormComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    HeaderComponent
   ],
   exports: [
     RoundedContainerComponent,
     SignInFormComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

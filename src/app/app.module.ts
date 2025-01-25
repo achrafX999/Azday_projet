@@ -6,6 +6,7 @@ import { SharedModule } from './core/shared/shared.module';
 import { SignInModule } from './pages/authentification/sign-in/signe-in.module';
 import { SignInFormComponent } from './core/shared/authentification/sign-in-form/sign-in-form.component'; // Correction ici
 import { SignUpModule } from './pages/authentification/sign-up/sign-up.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SignUpModule } from './pages/authentification/sign-up/sign-up.module';
     AppRoutingModule,
     SignInModule,
     SignUpModule,
+    HomeModule,
     SharedModule
   ],
   bootstrap: [AppComponent]
