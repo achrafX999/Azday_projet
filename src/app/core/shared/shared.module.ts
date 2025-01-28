@@ -7,19 +7,25 @@ import { SignUpFormComponent } from './authentification/sign-up-form/sign-up-for
 import { RouterLink } from '@angular/router';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { Backround_imageComponent } from './backround_image/backround_image.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     RoundedContainerComponent,
     SignInFormComponent,
     SignUpFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    Backround_imageComponent,
+    SearchBarComponent
   ],
   exports: [
     RoundedContainerComponent,
     SignInFormComponent,
     SignUpFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    Backround_imageComponent,
+    SearchBarComponent
   ],
   imports: [
     CommonModule,

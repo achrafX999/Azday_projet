@@ -1,0 +1,76 @@
+/* Conteneur principal */
+.search-bar-group {
+    position: absolute;
+    width: 857px;
+    height: 460px;
+    left: 50%;
+    top: 247px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  
+  /* Titre */
+  .search-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 50px;
+    color: #ffffff;
+    margin-bottom: 30px;
+  }
+  
+  .search-title .highlight {
+    color: #97d721; /* Couleur verte */
+  }
+  
+  /* Conteneur des barres de recherche */
+  .search-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* Champ de recherche */
+  .search-input {
+    position: relative;
+    height: 50px;
+    flex: 1;
+    max-width: 400px;
+    background: #f8f8f8;
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+  }
+  
+  .search-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14.875px;
+    line-height: 22px;
+    color: #888888;
+  }
+  
+  /* Bouton de recherche */
+  .search-button {
+    width: 53px;
+    height: 50px;
+    background: #97d721;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .search-button i {
+    font-size: 20px;
+    color: #081a48;
+  }
+  
