@@ -1,3 +1,6 @@
 .home-content {
-    padding-top: 76px; /* Compense la hauteur du header */
-  }
+  display: flex;
+  flex-direction: column; /* Dispose les éléments verticalement */
+  min-height: 100vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
+  justify-content: space-between; /* Place le footer en bas si le contenu est insuffisant */
+}

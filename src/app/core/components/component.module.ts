@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../../app-routing.module';
 import { RouterLink } from '@angular/router';
 import { RecentBusinessesComponent } from './recent-businesses/recent-businesses.component';
+import { Deux_circle_image_homeComponent } from './deux_circle_image_home/deux_circle_image_home.component';
 
 @NgModule({
   declarations: [
-    RecentBusinessesComponent
+    RecentBusinessesComponent,
+    Deux_circle_image_homeComponent
   ],
   exports: [
-    RecentBusinessesComponent
+    RecentBusinessesComponent,
+    Deux_circle_image_homeComponent
   ],
   imports: [
     CommonModule,

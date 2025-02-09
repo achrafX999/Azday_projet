@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { Backround_imageComponent } from './backround_image/backround_image.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecentBusinessesComponent } from '../components/recent-businesses/recent-businesses.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { RecentBusinessesComponent } from '../components/recent-businesses/recen
     HeaderComponent,
     Backround_imageComponent,
     SearchBarComponent,
-    
+    FooterComponent
   ],
   exports: [
     RoundedContainerComponent,
@@ -28,7 +29,7 @@ import { RecentBusinessesComponent } from '../components/recent-businesses/recen
     HeaderComponent,
     Backround_imageComponent,
     SearchBarComponent,
-    
+    FooterComponent
   ],
   imports: [
     CommonModule,

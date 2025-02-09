@@ -1,0 +1,91 @@
+/* Conteneur principal */
+.growth-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 100px auto;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+  }
+  
+  /* Images circulaires */
+  .circle-images {
+    position: relative;
+  }
+  
+  .circle-image {
+    position: absolute;
+    border: 19px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .large-circle {
+    width: 552px;
+    height: 552px;
+    top: -200px;
+    left: -50px;
+  }
+  
+  .large-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .small-circle {
+    width: 342px;
+    height: 342px;
+    top: 100px;
+    left: 300px;
+  }
+  
+  .small-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Texte et bouton */
+  .growth-text {
+    max-width: 500px;
+    margin-left: auto;
+  }
+  
+  .growth-text h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #263238;
+    margin-bottom: 20px;
+  }
+  
+  .growth-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #888888;
+    margin-bottom: 30px;
+  }
+  
+  .explore-button {
+    background: #97D721;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .explore-button:hover {
+    background: #85C81A;
+  }
+  
