@@ -9,6 +9,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { Backround_imageComponent } from './backround_image/backround_image.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { RecentBusinessesComponent } from '../components/recent-businesses/recent-businesses.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     SignUpFormComponent,
     HeaderComponent,
     Backround_imageComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    
   ],
   exports: [
     RoundedContainerComponent,
@@ -25,7 +27,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     SignUpFormComponent,
     HeaderComponent,
     Backround_imageComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    
   ],
   imports: [
     CommonModule,
