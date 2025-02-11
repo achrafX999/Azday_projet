@@ -1,0 +1,301 @@
+/* Conteneur principal */
+.add-business-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 60px;
+  gap: 20px;
+}
+
+/* Section gauche */
+.left-section {
+  flex: 1;
+  max-width: 60%;
+  margin-left: 80px; /* Décalage du formulaire à droite */
+}
+
+/* Formulaire */
+.business-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 450px; /* Réduction de la largeur maximale du formulaire */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #081A48;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 450px; /* Réduction de la largeur maximale des champs */
+}
+
+textarea {
+  resize: none;
+}
+
+.add-more-btn {
+  margin-top: 5px;
+  background: none;
+  border: 1px solid #0097d7;
+  color: #0097d7;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  max-width: 450px; /* Réduction de la largeur maximale des boutons "Add More" */
+}
+
+.add-more-btn:hover {
+  background: #0097d7;
+  color: white;
+}
+
+/* Bouton "Upload Now" */
+.upload-btn {
+  background-color: #97D721;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-start;
+  max-width: 200px; /* Réduction de la largeur maximale du bouton "Upload Now" */
+}
+
+.upload-btn:hover {
+  background-color: #7cb417;
+}
+
+/* SECTION DROITE GLOBAL */
+.right-section {
+  flex: 1;
+  max-width: 40%; /* ou ajuster selon votre layout global */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* BLOCS COMMUNS (fond, ombre, arrondi) */
+.right-section > div {
+  background: #F5F4F8;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* 1. Bloc de la Carte de Localisation */
+.map-container h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #081A48;
+  margin-bottom: 10px;
+}
+
+.set-on-map-btn {
+  background: #97D721;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.map-container .map {
+  background: #e0e0e0;
+  height: 200px; /* Hauteur de la carte interactive */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #888;
+}
+
+/* 2. Bloc des Horaires d’Ouverture */
+.opening-hours h3 {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #081A48;
+  margin-bottom: 10px;
+}
+
+.opening-hours .open-247 {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #0097D7;
+  text-align: right;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.days-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.days-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.days-list li span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #455A64;
+}
+
+/* Bouton circulaire pour l’icône d’horloge */
+.clock-btn {
+  background: #F5F4F8;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bouton pour sélectionner l’heure */
+.select-time-btn {
+  background: #F5F4F8;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #455A64;
+}
+
+/* 3. Bloc d’Ajout de la Photo de Profil */
+.profile-picture h3 {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #081A48;
+  margin-bottom: 10px;
+}
+
+.picture-placeholder {
+  background: #e0e0e0;
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #888;
+}
+
+/* 4. Bloc d’Ajout d’Images Supplémentaires */
+.images h3 {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #081A48;
+  margin-bottom: 10px;
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Chaque emplacement d’image */
+.image-slot {
+  background: #e0e0e0;
+  border-radius: 8px;
+  position: relative;
+  padding-top: 100%; /* Permet de conserver un ratio carré */
+}
+
+/* Icône au centre de chaque case */
+.image-slot i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #888;
+}
+
+/* Bouton "Add More" pour les images */
+.images .add-more-btn {
+  width: 100%;
+  background: none;
+  border: 1px solid #0097d7;
+  color: #0097d7;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 76px; /* Ajoute un espacement sous le header */
+}
+
+/* Bouton Upload centré */
+.upload-button-container {
+  display: flex;
+  justify-content: center; /* Centre horizontalement le contenu */
+  margin-top: 40px; /* Espacement au-dessus */
+}
+
+/* Version alternative pour le bouton "Upload Now" si nécessaire */
+.upload-button {
+  background: #97D721; /* Couleur verte */
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 250px; /* Augmente la largeur */
+  text-align: center;
+}
+
+.upload-button:hover {
+  background: #7ab318; /* Légèrement plus foncé au survol */
+}

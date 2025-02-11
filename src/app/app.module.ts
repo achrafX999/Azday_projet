@@ -7,6 +7,8 @@ import { SignInModule } from './pages/authentification/sign-in/signe-in.module';
 import { SignInFormComponent } from './core/shared/authentification/sign-in-form/sign-in-form.component'; // Correction ici
 import { SignUpModule } from './pages/authentification/sign-up/sign-up.module';
 import { HomeModule } from './pages/home/home.module';
+import { AddBusinessModule } from './pages/add-business/add-business.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,11 @@ import { HomeModule } from './pages/home/home.module';
     SignInModule,
     SignUpModule,
     HomeModule,
-    SharedModule
+    AddBusinessModule,
+    SharedModule,
+    RouterModule.forRoot([]) // Ensure RouterModule is imported
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
