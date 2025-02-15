@@ -1,59 +1,60 @@
 <div class="sign-in-form-container p-4">
   <h2 class="text-left-title text-center mb-4">Get started absolutely free</h2>
-  
 
-  <!-- Champ First Name et Last Name -->
-  <div class="d-flex gap-3">
-    <!-- First Name -->
-    <div class="form-group mb-3 floating-label-group flex-grow-1">
-      <input type="text" id="firstName" class="form-control floating-input" placeholder=" " />
-      <label for="firstName" class="floating-label">
-        <i class="fas fa-user"></i> First Name
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <!-- Champ First Name et Last Name -->
+    <div class="d-flex gap-3">
+      <!-- First Name -->
+      <div class="form-group mb-3 floating-label-group flex-grow-1">
+        <input type="text" id="firstName" formControlName="first_name" class="form-control floating-input" placeholder=" " required />
+        <label for="firstName" class="floating-label">
+          <i class="fas fa-user"></i> First Name
+        </label>
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group mb-3 floating-label-group flex-grow-1">
+        <input type="text" id="lastName" formControlName="last_name" class="form-control floating-input" placeholder=" " required />
+        <label for="lastName" class="floating-label">Last Name</label>
+      </div>
+    </div>
+
+    <!-- Champ Email -->
+    <div class="form-group mb-3 floating-label-group">
+      <input type="email" id="email" formControlName="email" class="form-control floating-input" placeholder=" " required />
+      <label for="email" class="floating-label">
+        <i class="fas fa-envelope"></i> Email
       </label>
     </div>
 
-    <!-- Last Name -->
-    <div class="form-group mb-3 floating-label-group flex-grow-1">
-      <input type="text" id="lastName" class="form-control floating-input" placeholder=" " />
-      <label for="lastName" class="floating-label">
-        Last Name
+    <!-- Champ Mot de Passe -->
+    <div class="form-group mb-3 floating-label-group">
+      <input type="password" id="password" formControlName="password" class="form-control floating-input" placeholder=" " required />
+      <label for="password" class="floating-label">
+        <i class="fas fa-lock"></i> Password
       </label>
     </div>
-  </div>
 
-  <!-- Champ Email -->
-  <div class="form-group mb-3 floating-label-group">
-    <input type="email" id="email" class="form-control floating-input" placeholder=" " />
-    <label for="email" class="floating-label">
-      <i class="fas fa-envelope"></i> Email
-    </label>
-  </div>
+    <!-- Champ Confirmation du Mot de Passe -->
+    <div class="form-group mb-3 floating-label-group">
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control floating-input" placeholder=" " required />
+      <label for="confirmPassword" class="floating-label">
+        <i class="fas fa-lock"></i> Confirm Password
+      </label>
+    </div>
 
+    <p class="agreement-text text-center">
+      By signing up, I agree to the
+      <a href="#" class="terms-link">Terms of Service</a> and
+      <a href="#" class="privacy-link">Privacy Policy</a>.
+    </p>
 
-  <!-- Champ Mot de Passe -->
-  <div class="form-group mb-3 floating-label-group">
-    <input type="password" id="password" class="form-control floating-input" placeholder=" " />
-    <label for="password" class="floating-label">
-      <i class="fas fa-lock"></i> Password
-    </label>
-  </div>
+    <!-- Affichage des erreurs -->
+    <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
 
-  <!-- Champ Mot de Passe -->
-  <div class="form-group mb-3 floating-label-group">
-    <input type="password" id="password" class="form-control floating-input" placeholder=" " />
-    <label for="password" class="floating-label">
-      <i class="fas fa-lock"></i> Confirm assword
-    </label>
-  </div>
-
-  <p class="agreement-text text-center">
-    By signing up, I agree the 
-    <a href="#" class="terms-link">Terms of Service</a> and 
-    <a href="#" class="privacy-link">Privacy Policy</a>.
-  </p>
-
-  <!-- Bouton d'Inscription -->
-  <button type="button" class="btn custom-btn w-100 mb-3">Sign up</button>
+    <!-- Bouton d'Inscription -->
+    <button type="submit" class="btn custom-btn w-100 mb-3" [disabled]="signUpForm.invalid">Sign up</button>
+  </form>
 
   <br /> <br />
   <!-- Ligne de Séparation -->

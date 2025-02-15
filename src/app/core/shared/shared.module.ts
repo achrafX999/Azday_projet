@@ -11,6 +11,7 @@ import { Backround_imageComponent } from './backround_image/backround_image.comp
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecentBusinessesComponent } from '../components/recent-businesses/recent-businesses.component';
 import { FooterComponent } from './footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     Backround_imageComponent,
     SearchBarComponent,
-    FooterComponent
+    FooterComponent,
+    ReactiveFormsModule  
   ],
   imports: [
     CommonModule,
     RouterLink,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule  
   ]
 })
 export class SharedModule {}
