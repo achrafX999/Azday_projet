@@ -1,14 +1,30 @@
-/* General Styles */
 .sign-in-form-container {
-    background-color: #ffffff;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-    position: relative; /* Assure que les ajustements de position fonctionnent */
-    top: -22px; /* Déplace le formulaire 20px vers le haut */
-    transform: translateY(-20px); /* Option alternative pour un déplacement fluide */
-  }
+  background-color: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  padding: 15px;
+  margin: auto;
+  position: relative;
+  top: -80px;
+  transform: translateY(-10px);
+  overflow: hidden; /* Empêche le débordement */
+}
+
+
+
+/* Réduire l'espacement entre les champs */
+.form-group {
+  margin-bottom: 8px; /* Diminue l'espace entre les champs */
+}
+
+/* Ajustement du bouton */
+.sign-in-form-container .btn {
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: 10px;
+}
   
   .text-left-title {
     text-align: left;
@@ -16,7 +32,8 @@
   }
   
   .sign-in-form-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    margin-bottom: 10px; /* Réduction de l’espace sous le titre */
     font-weight: bold;
   }
   
@@ -46,7 +63,7 @@
   
   .floating-input {
     width: 100%;
-    padding: 10px 10px 10px 35px;
+    padding: 6px 10px;
     border: none;
     border-bottom: 1px solid #ddd;
     outline: none;
