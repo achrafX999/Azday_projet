@@ -2,36 +2,45 @@
   <h2 class="text-left-title text-center mb-4">Sign in to Niblin</h2>
   <br />
 
-  <!-- Champ Email -->
-  <div class="form-group mb-3 floating-label-group">
-    <input type="email" id="email" class="form-control floating-input" placeholder=" " />
-    <label for="email" class="floating-label">
-      <i class="fas fa-user"></i> Email/Username
-    </label>
-  </div>
-
-  <!-- Champ Mot de Passe -->
-  <div class="form-group mb-3 floating-label-group">
-    <input type="password" id="password" class="form-control floating-input" placeholder=" " />
-    <label for="password" class="floating-label">
-      <i class="fas fa-lock"></i> Password
-    </label>
-  </div>
-
-  <!-- Options (Se souvenir de moi + Mot de passe oublié) -->
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div class="form-check">
-      <input type="checkbox" id="rememberMe" class="form-check-input rounded-checkbox" />
-    <label for="rememberMe" class="form-check-label">Remember Me</label>
+  <!-- Formulaire -->
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Champ Email -->
+    <div class="form-group mb-3 floating-label-group">
+      <input type="email" id="email" formControlName="email" class="form-control floating-input" placeholder=" " required />
+      <label for="email" class="floating-label">
+        <i class="fas fa-user"></i> Email
+      </label>
     </div>
-    <a href="#" class="text-decoration-none">Forgot Password?</a>
-  </div>
 
-  <br />
-  <!-- Bouton de Connexion -->
-  <button type="button" class="btn custom-btn w-100 mb-3">Log in</button>
+    <!-- Champ Mot de Passe -->
+    <div class="form-group mb-3 floating-label-group">
+      <input type="password" id="password" formControlName="password" class="form-control floating-input" placeholder=" " required />
+      <label for="password" class="floating-label">
+        <i class="fas fa-lock"></i> Password
+      </label>
+    </div>
+
+    <!-- Options (Se souvenir de moi + Mot de passe oublié) -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="form-check">
+        <input type="checkbox" id="rememberMe" class="form-check-input rounded-checkbox" />
+        <label for="rememberMe" class="form-check-label">Remember Me</label>
+      </div>
+      <a href="#" class="text-decoration-none">Forgot Password?</a>
+    </div>
+
+    <!-- Affichage des erreurs -->
+    <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
+
+    <br />
+    <!-- Bouton de Connexion -->
+    <button type="submit" class="btn custom-btn w-100 mb-3" [disabled]="signInForm.invalid">Log in</button>
+
+  </form>
 
   <br /> <br /> <br />
+
   <!-- Ligne de Séparation -->
   <div class="text-center separator mb-3">
     <div class="line"></div>
@@ -39,7 +48,6 @@
     <div class="line"></div>
   </div>
   
-
   <!-- Options de Connexion Sociales -->
   <div class="text-center mb-3">
     <p class="continue-with-text">Continue with</p>
@@ -55,10 +63,9 @@
       </a>
     </div>
   </div>
-  
 
   <!-- Lien pour créer un compte -->
   <div class="text-center">
-    <p>Don't have any account? <a [routerLink]="'/sign-up'" class="custom-link text-decoration-none">Create a new Account</a></p>
+    <p>Don't have an account? <a [routerLink]="'/sign-up'" class="custom-link text-decoration-none">Create a new Account</a></p>
   </div>
 </div>
