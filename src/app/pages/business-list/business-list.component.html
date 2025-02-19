@@ -1,0 +1,125 @@
+<app-header></app-header>
+
+<!-- Background + Search -->
+<div class="home-content">
+  <app-backround_image></app-backround_image>
+  <app-search-bar></app-search-bar>
+</div>
+
+<!-- Main content (two columns) -->
+<div class="main-content">
+  
+  <!-- Left column: Business list -->
+  <div class="business-list-container">
+    
+    <!-- Title and Results Count -->
+    <div class="business-list-heading">
+      <h1>Plumber serving Toronto ON</h1>
+      <span>({{ totalResults }} Result(s))</span>
+    </div>
+
+    <!-- Filter buttons / bar -->
+    <div class="filters-container">
+      <button class="filter-btn selected">Most Popular</button>
+      <button class="filter-btn">Open Now</button>
+      <button class="filter-btn">Online Messaging</button>
+      <button class="filter-btn">Neighbourhood</button>
+      <button class="filter-btn">Language</button>
+      <button class="apply-filter-btn">Apply Filter</button>
+    </div>
+
+    <!-- Example: One business card / listing -->
+    <div 
+    class="business-card"  *ngFor="let business of paginatedBusinesses" >   
+       <!-- Business info -->
+      <div class="business-image">
+        <img src="assets/plumbing-service-logo.png" alt="Plumbing Service Logo" />
+      </div>
+      <div class="business-info">
+        <h2>{{ business.name }}</h2>
+        <p class="address">{{ business.address }}</p>
+        <p>{{ business.description }}</p>        
+        <!-- Action buttons -->
+        <div class="actions">
+          <button class="btn phone">Phone Number</button>
+          <button class="btn website">Website</button>
+          <button class="btn message">Message</button>
+          <button class="btn get-direction">Get Direction</button>
+        </div>
+      </div>
+      
+      <!-- Ratings / Reviews -->
+      <div class="business-rating">
+        <div class="stars">
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+          <span class="star filled"></span>
+        </div>
+        <div class="reviews">
+          ({{ business.reviewCount }}) <a class="read-reviews">Read Reviews</a>
+        </div>
+      </div>
+    </div>
+
+   
+    
+  </div>
+
+  
+  
+  <!-- Right column: Sidebar -->
+  <aside class="sidebar">
+    <!-- Map section -->
+    <div class="map-view">
+      <h2>Map view</h2>
+      <!-- Replace with your real map image or embed -->
+      <img src="assets/map-view-example.png" alt="Map" />
+    </div>
+    
+    <!-- Recently viewed businesses -->
+    <div class="recently-viewed">
+      <h2>Your recently viewed businesses:</h2>
+      <div class="recent-item">
+        <img src="assets/century-plumbing.png" alt="Century Plumbing & Heating" />
+        <div>
+          <p class="name">Century Plumbing & Heating</p>
+          <p class="description">Backflow Testing & Prevention</p>
+          <p class="time">Viewed 3 days ago</p>
+        </div>
+      </div>
+      <!-- Repeat for more recently viewed items -->
+    </div>
+  </aside>
+</div>
+
+ <!-- Pagination controls -->
+ <div class="pagination">
+  <!-- Prev -->
+  <span 
+    class="prev" 
+    (click)="prevPage()" 
+    [class.disabled]="currentPage === 1"
+  >
+    Prev
+  </span>
+
+  <!-- Next -->
+  <span 
+    class="next" 
+    (click)="nextPage()" 
+    [class.disabled]="currentPage === totalPages"
+  >
+    Next
+  </span>
+
+  <!-- Pages display -->
+  <span class="pages">
+    Pages: 1, 2, 3, 4, ........ 25
+  </span>
+</div>
+
+    <!-- Repeat the .business-card block for multiple listings -->
+
+<app-footer></app-footer>

@@ -9,6 +9,7 @@ import { SignUpModule } from './pages/authentification/sign-up/sign-up.module';
 import { HomeModule } from './pages/home/home.module';
 import { AddBusinessModule } from './pages/add-business/add-business.module';
 import { RouterModule } from '@angular/router';
+import { BusinessListModule } from './pages/business-list/business-list.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { RouterModule } from '@angular/router';
     HomeModule,
     AddBusinessModule,
     SharedModule,
+    BusinessListModule,
     RouterModule.forRoot([]) // Ensure RouterModule is imported
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
