@@ -77,16 +77,16 @@
   <div class="text-center mb-3">
     <p class="continue-with-text">Continue with</p>
     <div class="d-flex justify-content-center gap-4">
-      <a href="#" class="social-icon">
+      <a [href]="'http://127.0.0.1:8000/api/auth/social/google/?process=login'" class="social-icon">
         <i class="fab fa-google"></i>
       </a>
-      <a href="#" class="social-icon">
+      <a [href]="'http://127.0.0.1:8000/api/auth/social/apple/?process=login'" class="social-icon">
         <i class="fab fa-apple"></i>
       </a>
-      <a href="#" class="social-icon">
+      <a [href]="'http://127.0.0.1:8000/api/auth/social/linkedin/?process=login'" class="social-icon">
         <i class="fab fa-linkedin"></i>
       </a>
-    </div>
+    </div>    
   </div>
 
   <!-- Lien pour se connecter -->

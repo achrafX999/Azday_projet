@@ -28,7 +28,7 @@ export class SignInFormComponent {
       this.authService.login(credentials).subscribe(
         response => {
           console.log('Connexion réussie', response);
-          localStorage.setItem('token', response.token);
+          sessionStorage.setItem('token', response.token); // ✅ Stockage sécurisé
           this.router.navigate(['/home']);
         },
         error => {
