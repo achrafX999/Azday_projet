@@ -12,6 +12,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecentBusinessesComponent } from '../components/recent-businesses/recent-businesses.component';
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     Backround_imageComponent,
     SearchBarComponent,
-    FooterComponent
+    FooterComponent,
+    MapComponent
   ],
   exports: [
     RoundedContainerComponent,
@@ -31,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     Backround_imageComponent,
     SearchBarComponent,
     FooterComponent,
+    MapComponent,
     ReactiveFormsModule  
   ],
   imports: [

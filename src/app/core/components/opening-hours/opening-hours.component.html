@@ -1,0 +1,22 @@
+<div class="opening-hours">
+  <h3>Opening Hours</h3>
+  <ul class="days-list">
+    <li class="day-item" *ngFor="let day of days; let i = index">
+      <span>{{ day.dayName }}</span>
+
+      <!-- Champ pour l'heure d'ouverture -->
+      <input
+        type="time"
+        [(ngModel)]="day.openTime"
+        placeholder="Open time"
+      />
+
+      <!-- Champ pour l'heure de fermeture -->
+      <input
+        type="time"
+        [(ngModel)]="day.closeTime"
+        placeholder="Close time"
+      />
+    </li>
+  </ul>
+</div>

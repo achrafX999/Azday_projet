@@ -1,0 +1,74 @@
+/* 4. Bloc d’Ajout d’Images Supplémentaires */
+.images h3 {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #081A48;
+    margin-bottom: 10px;
+  }
+  
+  .images-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Chaque emplacement d’image */
+  .image-slot {
+    background: #e0e0e0;
+    border-radius: 8px;
+    position: relative;
+    padding-top: 100%; /* Permet de conserver un ratio carré */
+  }
+  
+  /* Icône au centre de chaque case */
+  .image-slot i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #888;
+  }
+  
+  /* Bouton "Add More" pour les images */
+  .images .add-more-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid #0097d7;
+    color: #0097d7;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+  }
+
+  .add-more-btn {
+    margin-top: 5px;
+    background: none;
+    border: 1px solid #0097d7;
+    color: #0097d7;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    max-width: 450px; /* Réduction de la largeur maximale des boutons "Add More" */
+  }
+  
+  .add-more-btn:hover {
+    background: #0097d7;
+    color: white;
+  }
+
+  .images .add-more-btn {
+    width: 100%;
+    background: none;
+    border: 1px solid #0097d7;
+    color: #0097d7;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+  }

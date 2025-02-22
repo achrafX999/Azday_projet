@@ -1,0 +1,24 @@
+<div class="images">
+  <h3>Add Images</h3>
+  <div class="images-grid">
+    <!-- Itération sur le tableau imagesPreviews -->
+    <div class="image-slot" *ngFor="let preview of imagesPreviews; let i = index">
+      <!-- Zone cliquable pour ouvrir le sélecteur de fichier -->
+      <div (click)="fileInputs.toArray()[i].nativeElement.click()">
+        <ng-container *ngIf="preview; else defaultIcon">
+          <img [src]="preview" alt="Selected Image" style="width: 100%; height: 100%; object-fit: cover;">
+        </ng-container>
+        <ng-template #defaultIcon>
+          <i class="image-icon"></i>
+        </ng-template>
+      </div>
+      <!-- Champ file caché -->
+      <input type="file"
+             #fileInput
+             (change)="onImageSelected($event, i)"
+             accept="image/*"
+             hidden />
+    </div>
+  </div>
+  <button type="button" class="add-more-btn" (click)="addMoreImageSlot()">Add More</button>
+</div>

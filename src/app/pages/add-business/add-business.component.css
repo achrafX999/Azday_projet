@@ -138,43 +138,11 @@ textarea {
 }
 
 /* 2. Bloc des Horaires d’Ouverture */
-.opening-hours h3 {
-  font-family: 'Mulish', sans-serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: #081A48;
-  margin-bottom: 10px;
-}
 
-.opening-hours .open-247 {
-  font-family: 'Mulish', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  color: #0097D7;
-  text-align: right;
-  display: block;
-  margin-bottom: 10px;
-}
 
-.days-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.days-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
 
-.days-list li span {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: #455A64;
-}
+
 
 /* Bouton circulaire pour l’icône d’horloge */
 .clock-btn {
@@ -243,7 +211,24 @@ textarea {
   background: #e0e0e0;
   border-radius: 8px;
   position: relative;
-  padding-top: 100%; /* Permet de conserver un ratio carré */
+  padding-top: 100%; /* Maintient un ratio 1:1 (carré) */
+}
+
+/* Conteneur qui recouvre tout l'espace disponible */
+.image-slot-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* L'image prend toute la place */
+.image-slot-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Coupe l'image si nécessaire pour remplir le carré */
+  border-radius: 8px; /* Pour garder les coins arrondis, si besoin */
 }
 
 /* Icône au centre de chaque case */
@@ -298,4 +283,27 @@ textarea {
 
 .upload-button:hover {
   background: #7ab318; /* Légèrement plus foncé au survol */
+}
+
+
+/* Place l'input file par-dessus toute la zone de l'image-slot */
+.file-input-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; 
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Icône par défaut centrée */
+.image-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #888;
 }

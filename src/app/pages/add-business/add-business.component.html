@@ -5,185 +5,183 @@
     <!-- Section gauche -->
     <div class="left-section">
       <h1>List your Business</h1>
-      <form class="business-form">
+      <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
         <!-- Choisir la catégorie -->
         <div class="form-group">
           <label for="category">Choose Category</label>
-          <select id="category">
-            <option>Select category</option>
+          <select id="category" formControlName="category">
+            <option value="Medical Clinics">Medical Clinics</option>
+            <option value="Grocery Stores">Grocery Stores</option>
+            <option value="Restaurants">Restaurants</option>
+            <option value="Car Repair">Car Repair</option>
+            <option value="Dentists">Dentists</option>
           </select>
         </div>
 
         <!-- Nom du Business -->
         <div class="form-group">
           <label for="business-name">Business Name</label>
-          <input type="text" id="business-name" placeholder="Type here" />
+          <input type="text" id="business-name" placeholder="Type here" formControlName="businessName" />
         </div>
 
         <!-- Numéro de téléphone -->
         <div class="form-group">
           <label for="phone-number">Phone Number</label>
-          <input type="text" id="phone-number" placeholder="Type here" />
+          <input type="text" id="phone-number" placeholder="Type here" formControlName="phoneNumber" />
         </div>
 
         <!-- Site web -->
         <div class="form-group">
           <label for="website">Website</label>
-          <input type="text" id="website" placeholder="Type here" />
+          <input type="text" id="website" placeholder="Type here" formControlName="website" />
         </div>
 
         <!-- Adresse -->
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" id="address" placeholder="Type here" />
+          <input type="text" id="address" placeholder="Type here" formControlName="address" />
         </div>
 
-        <!-- Langue -->
+        <!-- Langue (FormArray) -->
         <div class="form-group">
-          <label for="language">Language</label>
-          <select id="language">
-            <option>Select category</option>
-          </select>
-          <button type="button" class="add-more-btn">Add More</button>
+          <label>Language</label>
+          <div formArrayName="language">
+            <div *ngFor="let langCtrl of language.controls; let i = index">
+              <select [formControlName]="i">
+                <option value="arabe">arabe</option>
+                <option value="francais">francais</option>
+                <option value="anglais">anglais</option>
+                <option value="espagne">espagne</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" class="add-more-btn" (click)="addLanguage()">Add More</button>
         </div>
 
-        <!-- Moyens de paiement -->
+        <!-- Moyens de paiement (FormArray) -->
         <div class="form-group">
-          <label for="payment-methods">Add Payment Methods</label>
-          <select id="payment-methods">
-            <option>Select category</option>
-          </select>
-          <button type="button" class="add-more-btn">Add More</button>
+          <label>Add Payment Methods</label>
+          <div formArrayName="paymentMethods">
+            <div *ngFor="let payCtrl of paymentMethods.controls; let i = index">
+              <select [formControlName]="i">
+                <option value="Credit Card">Credit Card</option>
+                <option value="Cash">Cash</option>
+                <option value="PayPal">PayPal</option>
+                <option value="Mobile Payment">Mobile Payment</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" class="add-more-btn" (click)="addPaymentMethod()">Add More</button>
         </div>
 
-        <!-- Produits et services -->
+        <!-- Produits et services (FormArray) -->
         <div class="form-group">
-          <label for="product-service">Product & Service</label>
-          <input type="text" id="product-service" placeholder="Type here" />
-          <button type="button" class="add-more-btn">Add More</button>
+          <label>Product & Service</label>
+          <div formArrayName="productService">
+            <div *ngFor="let prodCtrl of productService.controls; let i = index">
+              <input type="text" placeholder="Type here" [formControlName]="i" />
+            </div>
+          </div>
+          <button type="button" class="add-more-btn" (click)="addProductService()">Add More</button>
         </div>
 
-        <!-- Spécialisation -->
+        <!-- Spécialisation (FormArray) -->
         <div class="form-group">
-          <label for="specialize">Specialize</label>
-          <input type="text" id="specialize" placeholder="Type here" />
-          <button type="button" class="add-more-btn">Add More</button>
+          <label>Specialize</label>
+          <div formArrayName="specialize">
+            <div *ngFor="let specCtrl of specialize.controls; let i = index">
+              <input type="text" placeholder="Type here" [formControlName]="i" />
+            </div>
+          </div>
+          <button type="button" class="add-more-btn" (click)="addSpecialize()">Add More</button>
         </div>
 
         <!-- Description -->
         <div class="form-group">
           <label for="description">Add Description</label>
-          <textarea id="description" rows="4" placeholder="Type here"></textarea>
+          <textarea id="description" rows="4" placeholder="Type here" formControlName="description"></textarea>
+        </div>
+
+        
+
+        <!-- Bouton de soumission -->
+        <div class="upload-button-container">
+          <button type="submit" class="upload-btn">Upload Now</button>
         </div>
       </form>
     </div>
 
-    <!-- Section droite modifiée -->
+    <!-- Section droite (inchangée) -->
     <div class="right-section">
-      <!-- 1. Bloc de la carte de localisation -->
+      <!-- Bloc de la carte -->
       <div class="map-container">
         <h3>Location</h3>
-        <button type="button" class="set-on-map-btn">
-          <i class="map-icon"></i> Set On Map
-        </button>
-        <div class="map">
-          <!-- Intégrer ici la carte interactive avec le marqueur rouge -->
-          <p>Interactive Map with red marker</p>
-        </div>
+        <app-map (locationSelected)="onLocationSelected($event)"></app-map>
+
       </div>
 
-      <!-- 2. Bloc des horaires d'ouverture -->
-      <div class="opening-hours">
-        <h3>Opening Hours</h3>
-        <a href="#" class="open-247">Open 24/7</a>
-        <ul class="days-list">
-          <li class="day-item">
-            <span>Saturday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-          <li class="day-item">
-            <span>Sunday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-          <li class="day-item">
-            <span>Monday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-          <li class="day-item">
-            <span>Tuesday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-          <li class="day-item">
-            <span>Wednesday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-          <li class="day-item">
-            <span>Thursday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-          <li class="day-item">
-            <span>Friday</span>
-            <button type="button" class="clock-btn">
-              <i class="clock-icon"></i>
-            </button>
-            <button type="button" class="select-time-btn">Select time</button>
-          </li>
-        </ul>
-      </div>
+      <app-opening-hours></app-opening-hours>
 
-      <!-- 3. Bloc d’ajout de la photo de profil -->
       <div class="profile-picture">
         <h3>Add Profile Picture</h3>
-        <div class="picture-placeholder">
-          <i class="image-icon"></i>
-          <!-- Espace pour importer la photo de profil -->
+        
+        <!-- Conteneur qui déclenche le champ file -->
+        <div class="picture-placeholder" (click)="profilePictureInput.click()">
+          <!-- Si l'utilisateur a sélectionné une image, on l'affiche -->
+          <img *ngIf="profilePicturePreview; else defaultPlaceholder"
+               [src]="profilePicturePreview"
+               alt="Profile Picture"
+               style="width: 100%; height: 100%; object-fit: cover;" />
+               
+          <!-- Si aucune image n'est sélectionnée, on affiche l'icône par défaut -->
+          <ng-template #defaultPlaceholder>
+            <i class="image-icon"></i>
+          </ng-template>
         </div>
-        <button type="button" class="add-more-btn">Add More</button>
+        
+        <!-- Bouton "Add More" (optionnel) -->
+        <button type="button" class="add-more-btn" (click)="profilePictureInput.click()">Add More</button>
+      
+        <!-- Champ file caché -->
+        <input type="file"
+               #profilePictureInput
+               (change)="onProfilePictureSelected($event)"
+               accept="image/*"
+               hidden />
       </div>
+      
 
-      <!-- 4. Bloc d’ajout d’images supplémentaires -->
+      <!-- Bloc d'ajout d'images supplémentaires -->
       <div class="images">
         <h3>Add Images</h3>
         <div class="images-grid">
-          <div class="image-slot">
-            <i class="image-icon"></i>
+          <!-- Itération sur le tableau imagesPreviews -->
+          <div class="image-slot" *ngFor="let preview of imagesPreviews; let i = index">
+            <!-- Conteneur absolument positionné -->
+            <div class="image-slot-content">
+              <ng-container *ngIf="preview; else defaultIcon">
+                <img [src]="preview" alt="Selected Image" />
+              </ng-container>
+              <ng-template #defaultIcon>
+                <i class="image-icon"></i>
+              </ng-template>
+              <input
+                type="file"
+                #fileInput
+                (change)="onImageSelected($event, i)"
+                accept="image/*"
+                class="file-input-overlay"
+              />
+            </div>
           </div>
-          <div class="image-slot">
-            <i class="image-icon"></i>
-          </div>
-          <div class="image-slot">
-            <i class="image-icon"></i>
-          </div>
-          <div class="image-slot">
-            <i class="image-icon"></i>
-          </div>
-        </div>
-        <button type="button" class="add-more-btn">Add More</button>
+          
+        <button type="button" class="add-more-btn" (click)="addMoreImageSlot()">Add More</button>
       </div>
+      
+      
+      
+      
     </div>
-  </div>
-
-  <!-- Bouton Upload centré sur la page -->
-  <div class="upload-button-container">
-    <button type="submit" class="upload-btn">Upload Now</button>
   </div>
 </div>
 
