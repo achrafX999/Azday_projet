@@ -1,0 +1,126 @@
+/* Conteneur principal */
+.verification-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  /* Icône en haut */
+  .verification-icon img {
+    width: 80px; /* Ajuster selon la taille voulue */
+    height: 80px;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+  
+  /* Titre */
+  .verification-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #081A48;
+  }
+
+  /* Sous-titre */
+  .verification-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 30px;
+  }
+  
+  /* Groupe des 6 digits */
+ .digit-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* espace entre les cases */
+  margin-bottom: 30px;
+}
+  
+  /* Chaque champ de saisie */
+  .digit-input {
+    width: 50px;
+    height: 60px;
+    background-color: #eeeeee; /* gris clair */
+    border: 2px solid #82CE2C; /* vert pour la bordure */
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    outline: none;
+    color: #333; /* couleur du texte */
+    transition: border-color 0.3s;
+  }
+  
+  .digit-input:focus {
+    border-color: #5cab1d; /* bordure verte plus foncée au focus */
+}
+  
+  /* Conteneur des boutons, si nécessaire */
+.verification-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espace horizontal entre les boutons */
+    margin-bottom: 20px; /* Ajuste selon le design */
+  }
+  
+  /* Bouton "Resend" */
+.resend-btn {
+    background-color: #eeeeee; /* Gris clair */
+    color: #82CE2C;           /* Vert pour le texte */
+    border: none;
+    padding: 15px 40px;       /* Ajuste la taille du bouton */
+    border-radius: 50px;      /* Arrondi pour un aspect "pill" */
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .resend-btn:hover {
+    background-color: #e0e0e0; /* Légèrement plus foncé au survol */
+  }
+  
+  /* Bouton "Verify" */
+.verify-btn {
+    background-color: #82CE2C; /* Vert vif */
+    color: #fff;               /* Texte blanc */
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .verify-btn:hover {
+    background-color: #6cb523; /* Vert plus foncé au survol */
+  }
+  
+  /* Message d'erreur */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  /* Lien "Go Back" */
+  .go-back-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .go-back-link:hover {
+    text-decoration: underline;
+  }
+  

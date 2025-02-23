@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service'; // Import du service
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up-form',
@@ -11,7 +13,7 @@ export class SignUpFormComponent {
   signUpForm: FormGroup;
   errorMessage: string = '';
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
     this.signUpForm = this.fb.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
@@ -24,21 +26,17 @@ export class SignUpFormComponent {
 
   onSubmit() {
     if (this.signUpForm.valid) {
-      const formData = this.signUpForm.value;
-
+      const formData = { ...this.signUpForm.value };
       if (formData.password !== formData.confirmPassword) {
         this.errorMessage = "Passwords do not match!";
         return;
       }
-
-      // Supprimer confirmPassword avant d'envoyer à l'API
-      const apiData = { ...formData };
-      delete apiData.confirmPassword;
-
-      this.authService.register(apiData).subscribe(
+      //delete formData.confirmPassword;
+      this.authService.register(formData).subscribe(
         response => {
           console.log('Inscription réussie', response);
-          alert('Registration successful!');
+          // Redirige vers la page de vérification SMS en passant le numéro
+          this.router.navigate(['/verify-phone'], { state: { phone: formData.phone_number } });
         },
         error => {
           console.error('Erreur lors de l’inscription', error);
@@ -46,5 +44,5 @@ export class SignUpFormComponent {
         }
       );
     }
-  }
+  }  
 }

@@ -5,6 +5,7 @@ import { SignUpComponent } from './pages/authentification/sign-up/sign-up.compon
 import { HomeComponent } from './pages/home/home.component';
 import { AddBusinessComponent } from './pages/add-business/add-business.component';
 import { AuthCallbackComponent } from './core/shared/authentification/auth-callback/auth-callback.component';
+import { PhoneVerificationComponent } from './core/shared/authentification/phone-verification/phone-verification.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'auth/callback', component: AuthCallbackComponent },
   { path: 'home', component: HomeComponent },
   { path: 'add-business', component: AddBusinessComponent },
+  { path: 'verify-phone', component: PhoneVerificationComponent },
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, // Redirection par défaut
   { path: '**', redirectTo: '/sign-in' }, // Gestion des routes invalides
 ];

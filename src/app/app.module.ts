@@ -11,6 +11,7 @@ import { AddBusinessModule } from './pages/add-business/add-business.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PhoneVerificationModule } from './core/shared/authentification/phone-verification/phone-verification.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     SignInModule,
     SignUpModule,
+    PhoneVerificationModule,
     HomeModule,
     AddBusinessModule,
     HttpClientModule,

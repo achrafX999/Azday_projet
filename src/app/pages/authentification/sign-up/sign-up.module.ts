@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SignUpComponent } from './sign-up.component';
 import { SharedModule } from '../../../core/shared/shared.module'; // Import du module partagé
+import { PhoneVerificationModule } from '../../../core/shared/authentification/phone-verification/phone-verification.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SharedModule } from '../../../core/shared/shared.module'; // Import du 
     FormsModule,
     ReactiveFormsModule, // Nécessaire pour les formulaires réactifs
     SharedModule, // Inclut les composants partagés comme RoundedContainer
+    PhoneVerificationModule
   ],
 })
 export class SignUpModule {}
