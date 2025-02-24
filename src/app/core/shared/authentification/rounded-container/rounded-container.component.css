@@ -2,8 +2,8 @@
     /* Rectangle 8 */
 
 position: absolute;
-width: 643px;
-height: 100%;
+width: 40%;
+height: max-content;
 right: 0px;
 top: 0px;
 
@@ -23,3 +23,17 @@ border-radius: 400px 400px 23px 23px;
     width: 100%; /* Prend toute la largeur du conteneur arrondi */
     box-sizing: border-box; /* Inclure le padding dans la largeur totale */
 }
+@media screen and (max-width: 875px) {
+  /* Rectangle 5526 */
+  .rounded-container {
+    position: absolute;
+    width: 85%;
+    height: 80%;
+    left: 7%;
+    right: 5%;
+    top: 10%;
+    bottom: 10%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px 15px 250px 250px;
+    transform: rotate(180deg);
+  }}
