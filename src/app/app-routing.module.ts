@@ -5,13 +5,15 @@ import { SignUpComponent } from './pages/authentification/sign-up/sign-up.compon
 import { HomeComponent } from './pages/home/home.component';
 import { AddBusinessComponent } from './pages/add-business/add-business.component';
 import { BusinessListComponent } from './pages/business-list/business-list.component';
+import { BusinessProfilComponent } from './pages/business-profil/business-profil.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'add-business', component: AddBusinessComponent },
-  { path: 'business-list', component:BusinessListComponent }, // New route for business list
+  { path: 'business-list', component:BusinessListComponent }, 
+  { path: 'business-profil', component:BusinessProfilComponent},
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, // Default redirection
   { path: '**', redirectTo: '/sign-in' }, // Handle invalid routes
 ];
