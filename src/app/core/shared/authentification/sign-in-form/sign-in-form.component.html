@@ -33,19 +33,16 @@
     <!-- Affichage des erreurs -->
     <p *ngIf="errorMessage" class="text-danger text-center">{{ errorMessage }}</p>
 
-    <br />
     <!-- Bouton de Connexion -->
     <button type="submit" class="btn custom-btn w-100 mb-3" [disabled]="signInForm.invalid">Log in</button>
 
   </form>
 
-  <br /> 
 
   <!-- Ligne de Séparation -->
   <div class="text-center separator mb-3">
-    <div class="line"></div>
+    
     <span class="or-text">Or</span>
-    <div class="line"></div>
   </div>
   
   <!-- Options de Connexion Sociales -->

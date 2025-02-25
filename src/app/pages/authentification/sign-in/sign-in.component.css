@@ -92,7 +92,7 @@
     transform: translate(-50%, -50%);
     width: 160px; /* Ajustez la largeur de l'image */
     height: 100px;
-    display: flex;
+    display: none;
   }
   .logo-caption{
     display: none;

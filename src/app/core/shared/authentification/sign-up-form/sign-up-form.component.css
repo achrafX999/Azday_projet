@@ -232,6 +232,30 @@
     text-decoration: underline; /* Ajoute une décoration au survol */
     color: #28a745; /* Couleur légèrement plus foncée */
   }
-  
+  @media screen and (max-width: 875px){
+    .sign-in-form-container{
+      max-height: max-content;
+      position: absolute;
+      width: 90%;
+      height: max-content;
+      left: 5%;
+      right: 5%;
+      top: 20%;
+      bottom: 20%;
+      border-radius: 15px 15px 250px 250px;
+      background: rgba(255, 255, 255, 0.0);
+      transform: rotate(180deg) scale(0.8);
+      }
+    
+    .text-left-title {
+      text-align: center;
+      margin-left: auto;
+    }
+    .sign-in-form-container .text-left-title::before {
+      content: url('../../../../../assets/azday-logo.png'); /* Remplacez par le chemin de votre image */
+      display: block;
+      margin: 0 auto 20px; /* Centre l'image et ajoute un espace en dessous */
+    }
+  }  
 
   

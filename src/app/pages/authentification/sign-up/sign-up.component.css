@@ -69,3 +69,31 @@
   max-width: 250px; /* Limite la largeur pour rester aligné */
   text-align: left; /* Aligne le texte à gauche */
 }
+@media screen and (max-width: 875px) {
+  .page-container{
+    background: url('../../../../assets/door1.jpeg') no-repeat center center;
+    background-size: cover;
+  }
+  .circle-image {
+    display: none;
+  }
+  .logo-caption{
+    display: none;
+  }
+  
+  .logo-image {
+    position: absolute;  /* Retire le positionnement absolu */
+    margin: 20px auto; /* Centre horizontalement et espace verticalement */
+    top:13%;
+    left:48%;
+    transform: translate(-50%, -50%);
+    width: 160px; /* Ajustez la largeur de l'image */
+    height: 100px;
+    display: none;
+  } 
+  
+  .right-section {
+    max-height: max-content;
+  }
+  
+}
