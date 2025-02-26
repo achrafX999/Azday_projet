@@ -11,6 +11,9 @@ background: #FFFFFF;
 box-shadow: -20px 2px 60px 12px rgba(0, 0, 0, 0.2);
 border-radius: 400px 400px 23px 23px;
 
+padding-bottom: 40px; /* Ajustez la valeur selon vos besoins */
+
+
   }
   
   .form-container {
