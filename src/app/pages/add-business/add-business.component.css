@@ -1,5 +1,8 @@
 /* Conteneur principal */
 @media (max-width:750px){
+  .main-content{
+    width: max-content;
+  }
   .add-business-container{
     width: max-content;
   }
