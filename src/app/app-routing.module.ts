@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddBusinessComponent } from './pages/add-business/add-business.component';
 import { AuthCallbackComponent } from './core/shared/authentification/auth-callback/auth-callback.component';
 import { PhoneVerificationComponent } from './core/shared/authentification/phone-verification/phone-verification.component';
+import { BusinessListComponent } from './pages/business-list/business-list.component';
+import { BusinessProfilComponent } from './pages/business-profil/business-profil.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -14,8 +16,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'add-business', component: AddBusinessComponent },
   { path: 'verify-phone', component: PhoneVerificationComponent },
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, // Redirection par défaut
-  { path: '**', redirectTo: '/sign-in' }, // Gestion des routes invalides
+  { path: 'business-list', component:BusinessListComponent }, 
+  { path: 'business-profil', component:BusinessProfilComponent},
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, // Default redirection
+  { path: '**', redirectTo: '/sign-in' }, // Handle invalid routes
 ];
 
 @NgModule({
