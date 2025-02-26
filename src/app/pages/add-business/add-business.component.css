@@ -1,4 +1,10 @@
 /* Conteneur principal */
+@media (max-width:750px){
+  .add-business-container{
+    width: max-content;
+  }
+}
+
 .add-business-container {
   display: flex;
   justify-content: space-between;

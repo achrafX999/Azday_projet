@@ -1,3 +1,29 @@
+@media (max-width : 750px) {
+  .footer-container{
+    flex-direction: row;
+      height: auto;
+      right: 0%;
+      gap: 10px;
+      padding: 0 10px;
+  }
+  .footer-content{
+    grid-template-columns: 1fr; /* Une seule colonne */
+    text-align: center;
+    width: auto;
+    padding: auto;
+    transform: scale(0.8);
+  }
+  .footer-copyright{
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;
+    left : 30%;
+    
+  }
+}
+
+
 /* Conteneur principal du footer */
 .footer-container {
     position: relative;
@@ -18,9 +44,13 @@
   
   /* Contenu principal */
   .footer-content {
-    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) ; /* Trois colonnes égales */
+    gap: 20px; /* Espacement entre les colonnes */
+  
   }
   
   /* Section individuelle */

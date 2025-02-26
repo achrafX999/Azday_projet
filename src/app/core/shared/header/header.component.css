@@ -1,11 +1,15 @@
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .header-container {
-      flex-direction: column;
+      flex-direction: row;
       height: auto;
+      right: 0%;
+      gap: 10px;
+      padding: 0 10px;
+      
     }
-  
+    
     .menu {
-      flex-direction: column;
+      flex-direction: row;
       gap: 10px;
     }
   
