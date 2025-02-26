@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BusinessService } from '../../core/shared/services/business.service';
+import { CategoryService,Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-add-business',
@@ -11,6 +12,9 @@ import { BusinessService } from '../../core/shared/services/business.service';
 export class AddBusinessComponent implements OnInit {
   businessForm!: FormGroup;
   errorMessage: string = '';
+  categories: Category[] = [];
+  openingHoursDays: any[] = [];
+
   profilePicturePreview: string | ArrayBuffer | null = null;
 
   // Variables pour stocker la latitude et la longitude
@@ -25,12 +29,13 @@ export class AddBusinessComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private businessService: BusinessService,
+              private categoryService: CategoryService,
               private router: Router) {}
 
   ngOnInit(): void {
     this.businessForm = this.fb.group({
       category: ['', Validators.required],
-      businessName: ['', Validators.required],
+      name: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       website: [''],
       address: ['', Validators.required],
@@ -46,8 +51,19 @@ export class AddBusinessComponent implements OnInit {
         this.fb.control(null),
         this.fb.control(null),
         this.fb.control(null)
-      ])
+      ]),
+      latitude: ['', Validators.required],
+      longitude: ['', Validators.required],
     });
+    // Charger les catégories depuis le service
+  this.categoryService.getCategories().subscribe(
+    data => {
+      this.categories = data;
+    },
+    error => {
+      console.error("Erreur lors du chargement des catégories", error);
+    }
+  );
   }
 
   // Getters pour les FormArray non liés aux fichiers (si nécessaire)
@@ -92,6 +108,12 @@ export class AddBusinessComponent implements OnInit {
     this.images.push(this.fb.control(null));
   }
 
+  // Méthode pour recevoir les horaires depuis le composant enfant
+  onOpeningHoursChanged(hours: any[]): void {
+    this.openingHoursDays = hours;
+    console.log("Horaires reçus dans le parent:", this.openingHoursDays);
+  }
+
   // Méthode pour la photo de profil (similaire, si nécessaire)
   onProfilePictureSelected(event: any): void {
     const file = event.target.files[0];
@@ -127,7 +149,7 @@ export class AddBusinessComponent implements OnInit {
   onLocationSelected(location: { lat: number; lng: number }): void {
     this.latitude = location.lat;
     this.longitude = location.lng;
-
+    
     // Vous pouvez également mettre à jour votre formulaire si nécessaire
     this.businessForm.patchValue({
       latitude: location.lat,
@@ -137,25 +159,48 @@ export class AddBusinessComponent implements OnInit {
   }
   onSubmit(): void {
     if (this.businessForm.valid) {
-      // Préparer FormData pour inclure fichiers et autres données
       const formData = new FormData();
-      Object.keys(this.businessForm.value).forEach(key => {
-        if (key === 'images') {
-          this.businessForm.value.images.forEach((file: any, index: number) => {
-            if (file) {
-              formData.append(`images_${index}`, file);
-            }
-          });
-        } else if (key === 'profilePicture') {
-          if (this.businessForm.value.profilePicture) {
-            formData.append('profilePicture', this.businessForm.value.profilePicture);
+      const formValue = this.businessForm.value;
+  
+      // Renommer businessName en name
+      formData.append('name', formValue.name); // Si le contrôle s'appelle "name" dans le FormGroup
+      // Si le contrôle est "businessName", faites : formData.append('name', formValue.businessName);
+      
+      // Ajouter le champ category (nécessaire, car il est défini dans le formulaire)
+      formData.append('category', formValue.category);
+  
+      // Ajouter les autres champs simples
+      formData.append('description', formValue.description);
+      formData.append('address', formValue.address);
+      formData.append('phone_number', formValue.phoneNumber);
+      formData.append('email', formValue.email);
+      formData.append('website', formValue.website);
+      formData.append('latitude', formValue.latitude);
+      formData.append('longitude', formValue.longitude);
+  
+      // Ajouter les champs JSON (les FormArrays)
+      formData.append('languages', JSON.stringify(formValue.language));
+      formData.append('payment_methods', JSON.stringify(formValue.paymentMethods));
+      formData.append('product_services', JSON.stringify(formValue.productService));
+      formData.append('specialize', JSON.stringify(formValue.specialize));
+  
+      // Ajouter la photo de profil
+      if (formValue.profilePicture) {
+        formData.append('profile_picture', formValue.profilePicture);
+      }
+  
+      // Ajouter les images supplémentaires
+      if (formValue.images && formValue.images.length > 0) {
+        formValue.images.forEach((file: any, index: number) => {
+          if (file) {
+            formData.append(`images_${index}`, file);
           }
-        } else if (this.businessForm.value[key] instanceof Array) {
-          formData.append(key, JSON.stringify(this.businessForm.value[key]));
-        } else {
-          formData.append(key, this.businessForm.value[key]);
-        }
-      });
+        });
+      }
+  
+      // Ajouter les horaires d'ouverture en JSON
+      formData.append('opening_hours', JSON.stringify(this.openingHoursDays));
+  
       console.log("FormData ready to send:", formData);
       this.businessService.addBusiness(formData).subscribe(
         response => {
@@ -171,4 +216,7 @@ export class AddBusinessComponent implements OnInit {
       this.errorMessage = "Veuillez remplir correctement tous les champs obligatoires.";
     }
   }
+  
+  
+  
 }

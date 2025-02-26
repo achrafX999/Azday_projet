@@ -10,18 +10,18 @@
         <div class="form-group">
           <label for="category">Choose Category</label>
           <select id="category" formControlName="category">
-            <option value="Medical Clinics">Medical Clinics</option>
-            <option value="Grocery Stores">Grocery Stores</option>
-            <option value="Restaurants">Restaurants</option>
-            <option value="Car Repair">Car Repair</option>
-            <option value="Dentists">Dentists</option>
+            <option value="">Select category</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">
+              {{ cat.name }}
+            </option>
           </select>
         </div>
+        
 
         <!-- Nom du Business -->
         <div class="form-group">
           <label for="business-name">Business Name</label>
-          <input type="text" id="business-name" placeholder="Type here" formControlName="businessName" />
+          <input type="text" id="business-name" placeholder="Type here" formControlName="name" />
         </div>
 
         <!-- Numéro de téléphone -->
@@ -120,7 +120,7 @@
 
       </div>
 
-      <app-opening-hours></app-opening-hours>
+      <app-opening-hours (openingHoursChanged)="onOpeningHoursChanged($event)"></app-opening-hours>
 
       <div class="profile-picture">
         <h3>Add Profile Picture</h3>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-opening-hours',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./opening-hours.component.css']
 })
 export class OpeningHoursComponent {
+  // Tableau des horaires d'ouverture
   days = [
     { dayName: 'Saturday', openTime: '', closeTime: '' },
     { dayName: 'Sunday', openTime: '', closeTime: '' },
@@ -16,9 +17,12 @@ export class OpeningHoursComponent {
     { dayName: 'Friday', openTime: '', closeTime: '' },
   ];
 
-  // Vous pouvez ensuite récupérer ces valeurs pour les envoyer à votre backend
-  saveHours() {
-    console.log(this.days);
-    // Faire un appel HTTP ou stocker les données
+  // EventEmitter pour transmettre les horaires au composant parent
+  @Output() openingHoursChanged = new EventEmitter<any>();
+
+  // Vous pouvez appeler cette méthode à chaque changement, ou sur un bouton "Save Hours"
+  saveHours(): void {
+    console.log("Horaires d'ouverture:", this.days);
+    this.openingHoursChanged.emit(this.days);
   }
 }
