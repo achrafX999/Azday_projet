@@ -1,0 +1,41 @@
+<div class="map-wrapper">
+  <!-- 1) Le grand rectangle bleu arrondi en haut -->
+  <div class="map-bg"></div>
+
+  <!-- 2) L’onglet (tab) bleu qui dépasse sur la carte -->
+  <div class="map-tab">
+    <h2>Discover businesses in your area</h2>
+  </div>
+
+  <!-- 3) La carte -->
+  <div class="map-container">
+    <app-map></app-map>
+
+    <!-- 4) Bloc "Location Near You" -->
+    <div class="location-near-you">
+      <div class="location-header">
+        <h3>Location Near you</h3>
+        <a class="view-all" href="#">view all</a>
+      </div>
+
+      <div class="location-cards">
+        <!-- Exemple d'une carte -->
+        <div class="location-card">
+          <div class="image-wrapper">
+            <img src="assets/laundry.jpg" alt="Laundry Service" />
+            <div class="category-badge">Laundry</div>
+          </div>
+          <div class="location-info">
+            <h4>Lorem Ipsum Laundry service</h4>
+            <div class="rating">★ 4.9</div>
+            <div class="place">Jakarta, Indonesia</div>
+          </div>
+        </div>
+
+        <!-- Ajoutez ou dupliquez plus de .location-card selon vos besoins -->
+      </div>
+    </div>
+    <!-- Fin du bloc "Location Near You" -->
+
+  </div>
+</div>

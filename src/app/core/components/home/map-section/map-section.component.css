@@ -1,0 +1,173 @@
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto 0 auto; /* 50px de marge en haut, 0 en bas */
+    /* Si vous voulez un margin-top pour séparer du contenu précédent, ajoutez-le ici */
+  }
+  
+  /* -- 1) Le grand rectangle arrondi en haut (Rectangle 7 dans Figma) -- */
+  .map-bg {
+    position: absolute;
+    top: -5%; /* ou top: -50px si vous voulez qu'il dépasse vers le haut */
+    left: 50%;
+    transform: translateX(-50%);
+  
+    width: 1200px; /* Largeur indiquée dans Figma */
+    height: 51px;  /* Hauteur indiquée dans Figma */
+    background: #081A48;
+    border-radius: 23px 23px 0 0; /* Arrondi seulement sur le haut */
+    
+    z-index: 1; /* S’assure que cet élément soit derrière le .map-tab (qui aura un z-index plus élevé) */
+  }
+  
+  /* -- 2) Le “tab” bleu (arc plus petit) qui déborde sur la carte -- */
+  .map-tab {
+    position: absolute;
+    top: -80px; /* remonte l’onglet au-dessus de la carte */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 600px;
+    height: 80px;
+    background-color: #081A48;
+    border-radius: 54px 54px 0 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+  
+    z-index: 2; /* Au-dessus du map-bg */
+  }
+  
+  /* Le texte du tab */
+  .map-tab h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  /* -- 3) La carte -- */
+  .map-container {
+    margin-top: 100px; /* Espace pour que la carte ne soit pas masquée par le tab */
+    border-radius: 0 0 23px 23px; /* Arrondi en bas, si vous voulez */
+    /* overflow: hidden;  <-- commentez ou supprimez */
+    position: relative;   /* pour positionner .location-near-you en absolu */
+}
+  
+  /* Ajustez la taille de la carte (#map) */
+  .map-container app-map #map {
+    width: 100%;
+    height: 400px;
+  }
+  
+  /***********************************************
+ *  B) Bloc "Location Near You"
+ ***********************************************/
+.location-near-you {
+    position: absolute;
+    bottom: -80px;  /* Ajustez pour le placer plus ou moins haut */
+    right: -220px;   /* Espace depuis la droite */
+    z-index: 1001; /* Pour être au-dessus de la carte */
+    width: 450px;  /* Largeur du bloc blanc */
+    height: 200px;
+    background: #ffffff;
+    box-shadow: 9px -9px 9.6px rgba(0, 0, 0, 0.1);
+    border-radius: 22px 0 0 22px;
+    padding: 1rem;
+  }
+  
+  /* En-tête (titre + lien "view all") */
+  .location-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .location-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #252B5C;
+    margin: 0;
+  }
+  
+  .view-all {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #234F68;
+    text-decoration: none;
+  }
+  
+  /* Liste des cartes */
+  .location-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Carte individuelle */
+  .location-card {
+    background: #f5f4f8;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0.9rem;
+    gap: 0.9rem;
+  }
+  
+  /* Image et badge */
+  .image-wrapper {
+    position: relative;
+    width: 90px; /* Ajustez selon la taille voulue */
+    height: 90px;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .category-badge {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background: #0097d7;
+    color: #ffffff;
+    font-size: 8px;
+    padding: 2px 4px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Infos sur la carte */
+  .location-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .location-info h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #252B5C;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+  }
+  
+  .rating {
+    font-size: 10px;
+    color: #53587a;
+    margin-bottom: 4px;
+  }
+  
+  .place {
+    font-size: 8px;
+    color: #53587a;
+  }
