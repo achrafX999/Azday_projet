@@ -1,0 +1,75 @@
+/* Conteneur global des recherches récentes */
+.recent-searches-container {
+    margin: 2rem auto; /* Espace en haut/bas et centrage horizontal */
+    width: 560px;      /* Largeur fixe, à adapter pour le responsive */
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .recent-searches-container h2 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #263238;
+    margin-bottom: 1rem;
+  }
+  
+  /* Chaque "carte" */
+  .search-card {
+    display: flex;
+    align-items: center;
+    background: #F5F4F8;
+    border-radius: 17px;
+    padding: 1rem;
+    margin-bottom: 1rem; /* Espace entre plusieurs cartes éventuelles */
+  }
+  
+  /* L'icône (pin) à gauche */
+  .search-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Empêche l'image de déborder si elle est plus grande */
+  }
+  
+  .search-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ajuste l’image au conteneur sans la déformer */
+  }
+  
+  
+  /* Conteneur pour le titre et le sous-titre */
+  .search-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Pour que ce bloc prenne l'espace restant entre l'icône et le bouton X */
+  }
+  
+  /* Titre principal */
+  .search-title {
+    font-weight: 500;
+    font-size: 18px;
+    color: #263238;
+    margin-bottom: 0.25rem; /* Légère marge sous le titre */
+  }
+  
+  /* Sous-titre (ex: "Viewed 3 days ago") */
+  .search-subtitle {
+    font-size: 16px;
+    color: #888888;
+  }
+  
+  /* Bouton de fermeture "X" */
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #263238;
+    cursor: pointer;
+    padding: 0;       /* Retirer les padding par défaut */
+    margin-left: 1rem;
+    align-self: flex-start; /* Pour l’aligner en haut à droite si souhaité */
+  }
+  

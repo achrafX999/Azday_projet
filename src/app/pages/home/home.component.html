@@ -1,6 +1,21 @@
 <app-header></app-header>
+
 <div class="home-content">
   <app-backround_image></app-backround_image>
   <app-search-bar></app-search-bar>
-  <app-footer></app-footer>
+
+  <!-- Conteneur qui regroupe les deux sections -->
+  <div class="recent-sections-wrapper">
+    <app-recent-searches></app-recent-searches>
+    <app-recently-viewed></app-recently-viewed>
+  </div>
+  <div style="height: 100px;"></div> <!-- Espace vide pour repousser la map vers le bas, si besoin -->
+  <app-map-section></app-map-section>
+
+  <div class="spacer"></div>
+  <app-deux_circle_image_home></app-deux_circle_image_home>
+
+  <app-review></app-review>
 </div>
+
+<app-footer></app-footer>

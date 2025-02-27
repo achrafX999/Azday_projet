@@ -1,0 +1,119 @@
+/* Conteneur global */
+.testimonials-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 100px auto;   /* Espace en haut et bas */
+    width: 90%;
+    max-width: 1679px;    /* D'après la largeur Figma, si vous le souhaitez */
+    position: relative;
+  }
+  
+  /* 1) Texte à gauche */
+  .testimonials-text {
+    flex: 0 0 400px; /* Largeur ~ 400px */
+    margin-right: 2rem;
+  }
+  
+  .testimonial-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #212B36;
+    display: block;  /* Pour forcer le retour à la ligne */
+    margin-bottom: 8px;
+  }
+  
+  .testimonial-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 28px;
+    color: #212B36;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    color: #212B36;
+    max-width: 400px;
+  }
+  
+  /* 2) Le conteneur arrondi à droite */
+  .testimonials-cards-wrapper {
+    flex: 1;                /* Pour occuper tout l’espace restant */
+    background: #F3FBF3;
+    border-radius: 210px 0 0 215px; /* Reprise des arrondis Figma */
+    min-height: 443px;      /* Hauteur mini si nécessaire */
+    position: relative;
+    overflow: hidden;       /* Coupe le contenu qui dépasse */
+    padding: 40px;          /* Espace intérieur */
+  }
+  
+  /* Conteneur des cartes (scroll horizontal si besoin) */
+  .testimonials-cards {
+    display: flex;
+    gap: 20px;               /* Espace entre les cartes */
+    overflow-x: auto;        /* Permet le scroll horizontal */
+    scroll-behavior: smooth; /* Défilement fluide */
+    /* Optionnel: white-space: nowrap; si vous voulez forcer la mise en ligne unique */
+  }
+  
+  /* 3) Style d’une carte */
+  .testimonial-card {
+    background: #FFFFFF;
+    box-shadow: 0px 20px 40px -10px rgba(223, 237, 244, 0.6);
+    border-radius: 64px; /* d’après Figma (64.0925px) */
+    width: 320px;        /* Largeur d’une carte */
+    padding: 1.5rem;
+    flex-shrink: 0;      /* Empêche la carte de se réduire en scroll horizontal */
+  }
+  
+  /* Contenu de la carte */
+  .testimonial-card-content {
+    position: relative;
+  }
+  
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border: 3px solid rgba(165, 201, 253, 0.2);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  
+  .testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Titre de la carte */
+  .testimonial-card h4 {
+    font-family: 'Barlow', sans-serif; /* Selon la maquette */
+    font-size: 18px;
+    font-weight: 500;
+    color: #818283;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Texte de la carte */
+  .testimonial-card p {
+    font-family: 'Barlow', sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 14px;
+    color: #9F9EAB;
+    margin-bottom: 1rem;
+  }
+  
+  /* Étoiles */
+  .stars {
+    color: #EBBE51; /* Couleur jaune */
+    font-size: 16px;
+  }
+  
