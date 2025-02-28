@@ -1,107 +1,105 @@
-@media (max-width : 750px) {
-  .footer-container{
-    flex-direction: row;
-      height: auto;
-      right: 0%;
-      gap: 10px;
-      padding: 0 10px;
-  }
-  .footer-content{
-    grid-template-columns: 1fr; /* Une seule colonne */
-    text-align: center;
-    width: auto;
-    padding: auto;
-    transform: scale(0.8);
-  }
-  .footer-copyright{
-    text-align: center;
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center;
-    left : 30%;
-    
-  }
-}
-
-
 /* Conteneur principal du footer */
 .footer-container {
-    position: relative;
-    width: 100%;
-    background: #ffffff;
-    padding: 20px 40px;
-    box-sizing: border-box;
-    margin-top: 50px;
-  }
-  
-  /* Ligne de séparation */
-  .separator {
-    width: 100%;
-    height: 1px;
-    background: rgba(145, 158, 171, 0.24);
-    margin-bottom: 20px;
-  }
-  
-  /* Contenu principal */
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  margin-top: 50px; /* Espace au-dessus du footer */
+}
+
+/* Ligne de séparation */
+.separator {
+  width: 100%;
+  height: 1px;
+  background: rgba(145, 158, 171, 0.24);
+  margin-bottom: 20px;
+}
+
+/* Contenu principal : 3 colonnes */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; 
+}
+
+/* Chaque colonne */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ----- LOGO UNIQUEMENT EN MOBILE ----- */
+/* Par défaut, on le masque */
+.footer-logo {
+  display: none;
+}
+
+/* Titres */
+.footer-title {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: #212b36;
+  margin-bottom: 10px;
+}
+
+/* Liens */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #212b36;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #0097d7;
+}
+
+/* Bas de page */
+.footer-copyright {
+  text-align: center;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #212b36;
+  margin-top: 20px;
+}
+
+/* --- MEDIA QUERY POUR MOBILE (max-width: 768px) --- */
+@media (max-width: 768px) {
+  /* On passe en 1 seule colonne */
   .footer-content {
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: row;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) ; /* Trois colonnes égales */
-    gap: 20px; /* Espacement entre les colonnes */
-  
-  }
-  
-  /* Section individuelle */
-  .footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 20px;
-  }
-  
-  /* Titre des sections */
-  .footer-title {
-    font-family: 'Public Sans', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 1.1px;
-    text-transform: uppercase;
-    color: #212b36;
-    margin-bottom: 10px;
-  }
-  
-  /* Liens des sections */
-  .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: 8px;
-  }
-  
-  .footer-links a {
-    font-family: 'Public Sans', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    color: #212b36;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-links a:hover {
-    color: #0097d7; /* Couleur au survol */
-  }
-  
-  /* Copyright */
-  .footer-copyright {
+    grid-template-columns: 1fr;
     text-align: center;
-    font-family: 'Public Sans', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    color: #212b36;
-    margin-top: 20px;
+    gap: 20px;
   }
-  
+  .footer-column {
+    align-items: center;
+  }
+
+  /* Le logo s'affiche en mobile */
+  .footer-logo {
+    display: block;
+    width: 100px;    /* Ajustez la taille */
+    height: 40px;
+    margin-bottom: 20px;
+    background: url('../../../../assets/azday-logo.png') no-repeat center center;
+    background-size: contain;
+  }
+}

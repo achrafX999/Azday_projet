@@ -121,3 +121,12 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optionnel : ombre subtile */
 .btn.login:hover {
   background: #007AB6; /* Couleur légèrement plus foncée */
 }
+
+.menu-list {
+  display: flex;
+  flex-direction: row;
+  gap: 40px; /* ou ajustez selon vos besoins */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
