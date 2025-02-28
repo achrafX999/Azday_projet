@@ -18,8 +18,14 @@ export class SignUpFormComponent {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone_number: ['', [Validators.required, Validators.pattern("^[0-9]{10,15}$")]], // Ajout du champ phone_number
-      password: ['', Validators.required],
+      phone_number: [
+        '', 
+        [
+          Validators.required, 
+          Validators.pattern(/^(0[0-9]{9}|\+212[0-9]{9})$/)
+        ]
+      ],
+            password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });
   }

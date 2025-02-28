@@ -10,7 +10,7 @@ import { AddBusinessModule } from './pages/add-business/add-business.module';
 import { RouterModule } from '@angular/router';
 import { BusinessListModule } from './pages/business-list/business-list.module';
 import { BusinessProfilModule } from './pages/business-profil/business-profil.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneVerificationModule } from './core/shared/authentification/phone-verification/phone-verification.module';
 
@@ -35,7 +35,7 @@ import { PhoneVerificationModule } from './core/shared/authentification/phone-ve
     RouterModule.forRoot([]) // Ensure RouterModule is imported
     
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

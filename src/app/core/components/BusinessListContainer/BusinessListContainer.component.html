@@ -1,0 +1,84 @@
+<div class="business-list-container">
+  <!-- Titre et compteur de résultats -->
+  <div class="business-list-heading">
+    <h1>{{ category || 'Default Category' }} serving {{ city || 'your city' }} ON</h1>
+    <span>({{ totalResults }} Result(s))</span>
+  </div>
+
+  <!-- Barres de filtres -->
+  <div class="filters-container">
+    <button class="filter-btn selected">Most Popular</button>
+    <button class="filter-btn">Open Now</button>
+    <button class="filter-btn">Online Messaging</button>
+    <button class="filter-btn">Neighbourhood</button>
+    <button class="filter-btn">Language</button>
+    <button class="apply-filter-btn">Apply Filter</button>
+  </div>
+
+  <!-- Affichage des business cards -->
+  <div *ngFor="let business of paginatedBusinesses" class="business-card">
+    <!-- Infos de l'entreprise -->
+    <div class="business-image">
+      <img
+      [src]="business.profile_picture ? 'http://127.0.0.1:8000/' + business.profile_picture : '/assets/business_default_image.png'"
+
+  alt="Business Logo"
+/>
+
+    </div>
+
+    <div class="business-info">
+      <h2>{{ business.name }}</h2>
+      <p class="address">{{ business.address }}</p>
+      <p class="description">{{ business.description }}</p>
+      <p class="more-description">
+        Call {{ business.name }} today for great service at reasonable rates.
+      </p>
+
+      <!-- Boutons d'actions -->
+      <div class="actions">
+        <button class="btn phone">
+          Phone Number
+        </button>
+        <button class="btn website">
+          Website
+        </button>
+        <button class="btn message">
+          Message
+        </button>
+        <button class="btn get-direction">
+          Get Direction
+        </button>
+      </div>
+    </div>
+
+    <!-- Évaluations / Avis -->
+    <div class="business-rating">
+      <div class="stars">
+        <!-- Exemple d'affichage 5 étoiles remplies -->
+        <span class="star filled"></span>
+        <span class="star filled"></span>
+        <span class="star filled"></span>
+        <span class="star filled"></span>
+        <span class="star filled"></span>
+      </div>
+      <div class="reviews">
+        ({{ business.reviewCount || 70 }})
+        <a class="read-reviews">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contrôles de pagination -->
+  <div class="pagination">
+    <span class="prev" (click)="prevPage()" [class.disabled]="currentPage === 1">
+      Prev
+    </span>
+    <span class="next" (click)="nextPage()" [class.disabled]="currentPage === totalPages">
+      Next
+    </span>
+    <span class="pages">
+      Pages: {{ currentPage }} / {{ totalPages }}
+    </span>
+  </div>
+</div>

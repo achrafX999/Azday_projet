@@ -1,22 +1,37 @@
-<div class="search-bar-group">
+<form (ngSubmit)="search()" class="search-bar-group">
   <!-- Titre -->
   <h1 class="search-title">Local <span class="highlight">Search</span> Start Here</h1>
 
   <!-- Barres de recherche -->
   <div class="search-inputs">
-    <!-- Champ "What" -->
-    <div class="search-input">
-      <input type="text" placeholder="What? (E.g. plumber)" />
+    <!-- Champ pour la catégorie avec autocomplétion -->
+    <div class="search-input" style="position: relative;">
+      <input 
+        type="text" 
+        placeholder="Category? (E.g. plumber)" 
+        [(ngModel)]="category" 
+        name="category"
+        (input)="onCategoryInput()" />
+      <!-- Liste déroulante des suggestions -->
+      <ul class="suggestions" *ngIf="categorySuggestions.length > 0">
+        <li *ngFor="let cat of categorySuggestions" (click)="selectCategory(cat)">
+          {{ cat.name }}
+        </li>
+      </ul>
     </div>
 
-    <!-- Champ "Where" -->
+    <!-- Champ pour la ville -->
     <div class="search-input">
-      <input type="text" placeholder="Where? (E.g. Toronto)" />
+      <input 
+        type="text" 
+        placeholder="City? (E.g. Toronto)" 
+        [(ngModel)]="city" 
+        name="city" />
     </div>
 
     <!-- Bouton de recherche -->
-    <button class="search-button">
+    <button type="submit" class="search-button">
       <i class="fas fa-search"></i>
     </button>
   </div>
-</div>
+</form>

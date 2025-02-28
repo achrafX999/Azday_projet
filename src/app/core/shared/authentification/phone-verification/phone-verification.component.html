@@ -4,74 +4,20 @@
     <img src="assets/shield.png" alt="Verification Icon" />
   </div>
 
-  <!-- Titre et sous-titre -->
-  <h2 class="verification-title">Confirm your email</h2>
-  <p class="verification-subtitle">Please enter the 6 Digit Code sent to your email ID</p>
+  <!-- Titre et sous-titre mis à jour pour la vérification par SMS -->
+  <h2 class="verification-title">Verify your phone</h2>
+  <p class="verification-subtitle">Please enter the 6-digit code sent to your phone number</p>
 
   <!-- Champs de saisie (6 cases) -->
   <form [formGroup]="verificationForm" (ngSubmit)="onVerify()" class="verification-form">
     <div class="digit-group">
-      <!-- Champ 1 -->
-      <input
-        type="text"
-        class="digit-input"
-        formControlName="digit1"
-        maxlength="1"
-        (input)="onDigitInput($event, 'digit2')"
-        id="digit1"
-      />
-    
-      <!-- Champ 2 -->
-      <input
-        type="text"
-        class="digit-input"
-        formControlName="digit2"
-        maxlength="1"
-        (input)="onDigitInput($event, 'digit3')"
-        id="digit2"
-      />
-    
-      <!-- Champ 3 -->
-      <input
-        type="text"
-        class="digit-input"
-        formControlName="digit3"
-        maxlength="1"
-        (input)="onDigitInput($event, 'digit4')"
-        id="digit3"
-      />
-    
-      <!-- Champ 4 -->
-      <input
-        type="text"
-        class="digit-input"
-        formControlName="digit4"
-        maxlength="1"
-        (input)="onDigitInput($event, 'digit5')"
-        id="digit4"
-      />
-    
-      <!-- Champ 5 -->
-      <input
-        type="text"
-        class="digit-input"
-        formControlName="digit5"
-        maxlength="1"
-        (input)="onDigitInput($event, 'digit6')"
-        id="digit5"
-      />
-    
-      <!-- Champ 6 -->
-      <input
-        type="text"
-        class="digit-input"
-        formControlName="digit6"
-        maxlength="1"
-        (input)="onDigitInput($event, null)"
-        id="digit6"
-      />
+      <input type="text" class="digit-input" formControlName="digit1" maxlength="1" (input)="onDigitInput($event, 'digit2')" id="digit1" />
+      <input type="text" class="digit-input" formControlName="digit2" maxlength="1" (input)="onDigitInput($event, 'digit3')" id="digit2" />
+      <input type="text" class="digit-input" formControlName="digit3" maxlength="1" (input)="onDigitInput($event, 'digit4')" id="digit3" />
+      <input type="text" class="digit-input" formControlName="digit4" maxlength="1" (input)="onDigitInput($event, 'digit5')" id="digit4" />
+      <input type="text" class="digit-input" formControlName="digit5" maxlength="1" (input)="onDigitInput($event, 'digit6')" id="digit5" />
+      <input type="text" class="digit-input" formControlName="digit6" maxlength="1" (input)="onDigitInput($event, null)" id="digit6" />
     </div>
-    
 
     <!-- Boutons "Resend" et "Verify" -->
     <div class="verification-actions">

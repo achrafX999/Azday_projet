@@ -13,6 +13,7 @@ import { MapComponent } from '../shared/map/map.component';
 import { SharedModule } from '../shared/shared.module';
 import { MapSectionComponent } from './home/map-section/map-section.component';
 import { ReviewComponent } from './home/review/review.component';
+import { BusinessListContainerComponent } from './BusinessListContainer/BusinessListContainer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReviewComponent } from './home/review/review.component';
     RecentSearchesComponent,
     RecentlyViewedComponent,
     MapSectionComponent,
-    ReviewComponent
+    ReviewComponent,
+    BusinessListContainerComponent
   ],
   exports: [
     RecentBusinessesComponent,
@@ -33,7 +35,8 @@ import { ReviewComponent } from './home/review/review.component';
     RecentSearchesComponent,
     RecentlyViewedComponent,
     MapSectionComponent,
-    ReviewComponent
+    ReviewComponent,
+    BusinessListContainerComponent
   ],
   imports: [
     CommonModule,

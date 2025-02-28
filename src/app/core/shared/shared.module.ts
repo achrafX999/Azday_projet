@@ -11,7 +11,7 @@ import { Backround_imageComponent } from './backround_image/backround_image.comp
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { RecentBusinessesComponent } from '../components/recent-businesses/recent-businesses.component';
 import { FooterComponent } from './footer/footer.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapComponent } from './map/map.component';
 
 @NgModule({
@@ -40,7 +40,8 @@ import { MapComponent } from './map/map.component';
     CommonModule,
     RouterLink,
     AppRoutingModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule,
+    FormsModule  
   ]
 })
 export class SharedModule {}

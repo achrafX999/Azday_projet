@@ -1,0 +1,183 @@
+/***********************************************
+ * Container principal (vous pouvez garder vos 
+ * styles existants pour .business-list-container)
+ ***********************************************/
+ .business-list-container {
+    background: #fff; /* ou la couleur de fond souhaitée */
+    padding: 1rem;
+  }
+  
+  /***********************************************
+   * Business Card 
+   ***********************************************/
+  .business-card {
+    display: flex;
+    flex-direction: row;
+    background: #f5f4f8;
+    border-radius: 17px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  /* Image du business */
+  .business-image img {
+    width: 180px;       /* Ajustez si besoin */
+    height: 230px;      /* Ajustez si besoin */
+    object-fit: cover;  /* Pour recadrer l'image sans déformer */
+    border-radius: 12px;
+  }
+  
+  /***********************************************
+   * Informations principales (nom, adresse, desc)
+   ***********************************************/
+  .business-info {
+    flex: 1; /* prend tout l'espace dispo */
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  /* Titre (nom de l'entreprise) */
+  .business-info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 32px; /* selon la maquette Figma */
+    line-height: 1.2;
+    color: #081a48;
+    margin: 0 0 0.25rem 0; 
+  }
+  
+  /* Adresse */
+  .business-info .address {
+    font-size: 18px;
+    color: #455a64;
+    margin: 0 0 0.25rem 0; 
+  }
+  
+  /* Description courte */
+  .business-info .description {
+    font-size: 18px;
+    color: #455a64;
+    margin: 0 0 0.25rem 0; 
+  }
+  
+  /* Phrase additionnelle */
+  .business-info .more-description {
+    font-size: 18px;
+    color: #455a64;
+    margin: 0.5rem 0 0.75rem;
+  }
+  
+  /***********************************************
+   * Actions (boutons)
+   ***********************************************/
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .actions .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 16px 17px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    background: #97d721;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* Variation pour "Get Direction" (couleur bleue) */
+  .actions .btn.get-direction {
+    background: #0097d7;
+  }
+  
+  /***********************************************
+   * Section Rating & Reviews
+   ***********************************************/
+  .business-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  
+  /* Étoiles */
+  .stars {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .star {
+    width: 21px;
+    height: 21px;
+    background: #ebbe51; /* Couleur de l'étoile */
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      67% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      33% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+  
+  .star.filled {
+    /* Optionnel si vous voulez gérer l'état "rempli" vs "vide" */
+  }
+  
+  .reviews {
+    font-size: 16px;
+    color: #455a64;
+  }
+  
+  .reviews a.read-reviews {
+    color: #0097d7;
+    text-decoration: none;
+    margin-left: 0.25rem;
+    cursor: pointer;
+  }
+  
+  /***********************************************
+   * Pagination
+   ***********************************************/
+  .pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .pagination .prev,
+  .pagination .next {
+    color: #0097d7;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .pagination .disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    text-decoration: none;
+  }
+  
+  .pagination .pages {
+    font-size: 1rem;
+    color: #9291a5;
+  }
+  
