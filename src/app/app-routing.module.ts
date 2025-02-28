@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AddBusinessComponent } from './pages/add-business/add-business.component';
 import { BusinessListComponent } from './pages/business-list/business-list.component';
 import { BusinessProfilComponent } from './pages/business-profil/business-profil.component';
+import { Contact_usComponent } from './pages/contact_us/contact_us.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'add-business', component: AddBusinessComponent },
   { path: 'business-list', component:BusinessListComponent }, 
   { path: 'business-profil', component:BusinessProfilComponent},
+  { path: 'contact_us', component:Contact_usComponent},
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, // Default redirection
   { path: '**', redirectTo: '/sign-in' }, // Handle invalid routes
 ];

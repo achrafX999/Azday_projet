@@ -11,6 +11,7 @@ import { AddBusinessModule } from './pages/add-business/add-business.module';
 import { RouterModule } from '@angular/router';
 import { BusinessListModule } from './pages/business-list/business-list.module';
 import { BusinessProfilModule } from './pages/business-profil/business-profil.module';
+import { Contact_usModule } from './pages/contact_us/contact_us.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BusinessProfilModule } from './pages/business-profil/business-profil.mo
     SharedModule,
     BusinessListModule,
     BusinessProfilModule,
+    Contact_usModule,
     RouterModule.forRoot([]) // Ensure RouterModule is imported
     
   ],

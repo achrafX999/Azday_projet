@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<div class="contact-container">
+  <h2>Contact Us</h2>
+  <p>If you have any questions or need assistance, please fill out the form below, and we'll get back to you as soon as possible.</p>
+
+  <form (ngSubmit)="onSubmit()" class="contact-form">
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="first_name">First Name:</label>
+      <input
+        type="text"
+        id="first_name"
+        [(ngModel)]="visiteurData.first_name"
+        name="first_name"
+        placeholder="Enter your first name"
+        required
+      />
+      <div *ngIf="submitted && !visiteurData.first_name" class="error-message">
+        First name is required.
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="last_name">Last Name:</label>
+      <input
+        type="text"
+        id="last_name"
+        [(ngModel)]="visiteurData.last_name"
+        name="last_name"
+        placeholder="Enter your last name"
+        required
+      />
+      <div *ngIf="submitted && !visiteurData.last_name" class="error-message">
+        Last name is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="visiteurData.email"
+        name="email"
+        placeholder="Enter your email address"
+        required
+      />
+      <div *ngIf="submitted && !visiteurData.email" class="error-message">
+        Email is required.
+      </div>
+      <div *ngIf="submitted && visiteurData.email && !isValidEmail(visiteurData.email)" class="error-message">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Purpose -->
+    <div class="form-group">
+      <label for="description">Purpose:</label>
+      <textarea
+        id="description"
+        [(ngModel)]="visiteurData.description"
+        name="description"
+        placeholder="Describe your purpose"
+        required
+      ></textarea>
+      <div *ngIf="submitted && !visiteurData.description" class="error-message">
+        Purpose is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</div>
+
+<app-footer></app-footer>
