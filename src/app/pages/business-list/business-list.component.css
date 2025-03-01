@@ -1,3 +1,5 @@
+
+
 .home-content {
     display: flex;
     flex-direction: column; /* Dispose les éléments verticalement */
@@ -278,4 +280,36 @@
        color: #9291A5;
     */
   }
+  @media (max-width :750px) {
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
   
+    /* Conteneur home-content */
+    .home-content {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin: 0;    /* retire d’éventuelles marges */
+      padding: 0;   /* retire d’éventuels paddings */
+      min-height: 20vh;
+    }
+  
+    /* Conteneur principal */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    /* Chaque enfant de main-content occupe 100% de la largeur */
+    .main-content > * {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }

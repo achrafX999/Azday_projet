@@ -1,7 +1,10 @@
-/***********************************************
- * Container principal (vous pouvez garder vos 
- * styles existants pour .business-list-container)
- ***********************************************/
+@media (max-width:750px) {
+  .business-list-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
  .business-list-container {
     background: #fff; /* ou la couleur de fond souhaitée */
     padding: 1rem;
@@ -136,9 +139,7 @@
     );
   }
   
-  .star.filled {
-    /* Optionnel si vous voulez gérer l'état "rempli" vs "vide" */
-  }
+  
   
   .reviews {
     font-size: 16px;
