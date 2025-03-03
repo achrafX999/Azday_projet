@@ -48,6 +48,10 @@
   padding: 20px 60px;
   gap: 20px;
 }
+app-map {
+  z-index: 0 !important;  /* ➡️ Forcer le z-index pour permettre les clics */
+  position: relative;     /* ➡️ Assure-toi que la position est relative */
+}
 
 /* Section gauche */
 .left-section {

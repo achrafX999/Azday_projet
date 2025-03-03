@@ -37,6 +37,7 @@ export class AddBusinessComponent implements OnInit {
       category: ['', Validators.required],
       name: ['', Validators.required],
       phoneNumber: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]], 
       website: [''],
       address: ['', Validators.required],
       language: this.fb.array([this.fb.control('')]),
@@ -52,8 +53,8 @@ export class AddBusinessComponent implements OnInit {
         this.fb.control(null),
         this.fb.control(null)
       ]),
-      latitude: ['', Validators.required],
-      longitude: ['', Validators.required],
+      latitude: [null, Validators.required],
+      longitude: [null, Validators.required],
     });
     // Charger les catégories depuis le service
   this.categoryService.getCategories().subscribe(
@@ -158,6 +159,14 @@ export class AddBusinessComponent implements OnInit {
     console.log('Coordonnées sélectionnées : ', location);
   }
   onSubmit(): void {
+    console.log("➡️ Formulaire soumis !");
+    console.log("➡️ Formulaire valide:", this.businessForm.valid);
+    console.log("➡️ Valeurs du formulaire:", this.businessForm.value);
+    console.log("➡️ Opening Hours avant filtrage:", this.openingHoursDays);
+    const filteredOpeningHours = this.openingHoursDays.filter(hour => hour.openTime && hour.closeTime);
+    console.log("➡️ Opening Hours après filtrage:", filteredOpeningHours);
+    console.log("➡️ Latitude:", this.businessForm.value.latitude);
+    console.log("➡️ Longitude:", this.businessForm.value.longitude);
     if (this.businessForm.valid) {
       const formData = new FormData();
       const formValue = this.businessForm.value;
@@ -175,8 +184,9 @@ export class AddBusinessComponent implements OnInit {
       formData.append('phone_number', formValue.phoneNumber);
       formData.append('email', formValue.email);
       formData.append('website', formValue.website);
-      formData.append('latitude', formValue.latitude);
-      formData.append('longitude', formValue.longitude);
+      formData.append('latitude', String(formValue.latitude || ''));
+      formData.append('longitude', String(formValue.longitude || ''));
+
   
       // Ajouter les champs JSON (les FormArrays)
       formData.append('languages', JSON.stringify(formValue.language));
@@ -187,7 +197,10 @@ export class AddBusinessComponent implements OnInit {
       // Ajouter la photo de profil
       if (formValue.profilePicture) {
         formData.append('profile_picture', formValue.profilePicture);
-      }
+    } else {
+        formData.append('profile_picture', '');  // ➡️ Ajouter un champ vide pour éviter les erreurs
+    }
+    
   
       // Ajouter les images supplémentaires
       if (formValue.images && formValue.images.length > 0) {
@@ -199,9 +212,15 @@ export class AddBusinessComponent implements OnInit {
       }
   
       // Ajouter les horaires d'ouverture en JSON
-      formData.append('opening_hours', JSON.stringify(this.openingHoursDays));
+      
+      formData.append('opening_hours', JSON.stringify(filteredOpeningHours));
   
-      console.log("FormData ready to send:", formData);
+      (Array.from((formData as any).entries()) as [string, any][]).forEach(([key, value]) => {
+        console.log(`${key}: ${value}`);
+    });
+    
+    
+    
       this.businessService.addBusiness(formData).subscribe(
         response => {
           console.log("Business ajouté avec succès", response);
@@ -209,7 +228,10 @@ export class AddBusinessComponent implements OnInit {
         },
         error => {
           console.error("Erreur lors de l'ajout du business", error);
-          this.errorMessage = "Une erreur est survenue lors de l'ajout du business.";
+          if (error.error) {
+            console.log("➡️ Erreur détaillée:", error.error);  // 🔄 Afficher les détails précis de l'erreur
+          }
+          this.errorMessage = error.error?.message || "Une erreur est survenue lors de l'ajout du business.";
         }
       );
     } else {

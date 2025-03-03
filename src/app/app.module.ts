@@ -10,19 +10,19 @@ import { AddBusinessModule } from './pages/add-business/add-business.module';
 import { RouterModule } from '@angular/router';
 import { BusinessListModule } from './pages/business-list/business-list.module';
 import { BusinessProfilModule } from './pages/business-profil/business-profil.module';
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneVerificationModule } from './core/shared/authentification/phone-verification/phone-verification.module';
 
 @NgModule({
   declarations: [
     AppComponent
-
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    RouterModule.forRoot([], { useHash: true }),  // ➡️ Corrigé ici
     SignInModule,
     SignUpModule,
     PhoneVerificationModule,
@@ -31,11 +31,9 @@ import { PhoneVerificationModule } from './core/shared/authentification/phone-ve
     HttpClientModule,
     SharedModule,
     BusinessListModule,
-    BusinessProfilModule,
-    RouterModule.forRoot([]) // Ensure RouterModule is imported
-    
+    BusinessProfilModule
   ],
-  providers: [provideHttpClient(withFetch())],
+  providers: [],  // ➡️ Enlève provideHttpClient(withFetch()) si Angular < 15
   bootstrap: [AppComponent]
 })
 export class AppModule {}

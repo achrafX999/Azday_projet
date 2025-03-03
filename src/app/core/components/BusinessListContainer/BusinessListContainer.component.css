@@ -1,13 +1,8 @@
-@media (max-width:750px) {
-  .business-list-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-}
+
  .business-list-container {
     background: #fff; /* ou la couleur de fond souhaitée */
     padding: 1rem;
+    
   }
   
   /***********************************************
@@ -35,43 +30,38 @@
   /***********************************************
    * Informations principales (nom, adresse, desc)
    ***********************************************/
-  .business-info {
-    flex: 1; /* prend tout l'espace dispo */
+   .business-info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 1rem;
+    max-width: 100%;        /* S'assure que la largeur ne dépasse pas le conteneur parent */
+    width: 100%;             /* Prend toute la largeur disponible */
+    box-sizing: border-box;  /* Inclut le padding dans la largeur totale */
   }
+  
   
   /* Titre (nom de l'entreprise) */
   .business-info h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 32px; /* selon la maquette Figma */
+    font-size: 2rem;          /* Ajuste la taille pour plus de flexibilité */
     line-height: 1.2;
     color: #081a48;
-    margin: 0 0 0.25rem 0; 
+    margin: 0 0 0.5rem 0;     /* Espace plus généreux entre les éléments */
+    max-width: 100%;          /* S'assure que le texte ne déborde pas */
   }
   
-  /* Adresse */
-  .business-info .address {
-    font-size: 18px;
-    color: #455a64;
-    margin: 0 0 0.25rem 0; 
-  }
-  
-  /* Description courte */
-  .business-info .description {
-    font-size: 18px;
-    color: #455a64;
-    margin: 0 0 0.25rem 0; 
-  }
-  
-  /* Phrase additionnelle */
+  .business-info .address,
+  .business-info .description,
   .business-info .more-description {
-    font-size: 18px;
+    font-size: 1rem;          /* Ajuste la taille pour plus de flexibilité */
     color: #455a64;
-    margin: 0.5rem 0 0.75rem;
+    margin: 0 0 0.5rem 0;     /* Espace plus généreux entre les éléments */
+    max-width: 100%;          /* S'assure que le texte ne déborde pas */
+    word-wrap: break-word;    /* Force le texte à aller à la ligne si nécessaire */
   }
+  
   
   /***********************************************
    * Actions (boutons)
@@ -88,7 +78,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 16px 17px;
+    padding: 0.5rem 1rem;
+    max-width: 100%;            /* S'adapte à la largeur disponible */
+    box-sizing: border-box; 
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -181,4 +173,46 @@
     font-size: 1rem;
     color: #9291a5;
   }
+  @media (max-width:750px) {
+    .business-list-container{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 0;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .business-image img {
+      max-width: 100%;    /* s'adapte à la largeur du conteneur */
+      height: auto;       /* garde le ratio */
+      object-fit: cover;
+      border-radius: 2%;  /* ou utilisez une valeur en rem si besoin */
+    }
+    .business-card {
+      flex-direction: row;   /* Empile les éléments verticalement sur mobile */
+      align-items: center;      /* Centre les éléments */
+      width: 100%;
+      max-width: 100%;
+    }
+     /* Titre (nom de l'entreprise) */
+     .business-info {
+      max-width: 100%;
+      width: 100%;
+      text-align: center;       /* Centre le texte sur mobile */
+      padding: 0 1rem;          /* Ajoute un padding latéral pour l'espacement */
+      box-sizing: border-box;   /* Gère le padding correctement */
+    }
+    
+    .business-info h2 {
+      font-size: 1.5rem;        /* Réduit la taille du titre sur mobile */
+    }
   
+    .business-info .address,
+    .business-info .description,
+    .business-info .more-description {
+      font-size: 0.9rem;        /* Réduit légèrement la taille du texte sur mobile */
+    }
+    .business-rating{
+      display: none;
+    }
+  }
