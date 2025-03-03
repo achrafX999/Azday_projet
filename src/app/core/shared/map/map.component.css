@@ -1,5 +1,9 @@
 #map {
-    width: 100%;
-    height: 400px;
-  }
+  height: 500px;        /* ➡️ Assure-toi que la carte a une hauteur correcte */
+  width: 100%;          /* ➡️ Utilise toute la largeur disponible */
+  z-index: 0;           /* ➡️ Mettre un z-index bas pour permettre les clics */
+  position: relative;   /* ➡️ Assure-toi que la position est relative */
+  pointer-events: auto;
+}
+
   

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from '../../app-routing.module';
-import { RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { RecentBusinessesComponent } from './recent-businesses/recent-businesses.component';
 import { Deux_circle_image_homeComponent } from './home/deux_circle_image_home/deux_circle_image_home.component';
 import { AddImagesComponent } from './add-images/add-images.component';
@@ -35,12 +35,13 @@ import { BusinessListContainerComponent } from './BusinessListContainer/Business
     RecentSearchesComponent,
     RecentlyViewedComponent,
     MapSectionComponent,
+    MapComponent,
     ReviewComponent,
     BusinessListContainerComponent
   ],
   imports: [
     CommonModule,
-    RouterLink,
+    RouterModule,
     AppRoutingModule,
     FormsModule,
     SharedModule

@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, Output, EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { BusinessService, BusinessLocation } from '../services/business.service';
 
 @Component({
   selector: 'app-map',
@@ -12,15 +13,12 @@ export class MapComponent implements AfterViewInit {
 
   @Output() locationSelected = new EventEmitter<{ lat: number; lng: number }>();
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private businessService: BusinessService) {}
 
   async ngAfterViewInit(): Promise<void> {
-    // Vérifie que le code s'exécute bien dans un navigateur
     if (isPlatformBrowser(this.platformId)) {
       const L = await import('leaflet');
 
-      // Correction pour le problème d'icônes avec Leaflet
-      // (les icônes par défaut ne s'affichent pas toujours correctement avec Webpack/Vite)
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'assets/marker icon.png',
@@ -28,14 +26,20 @@ export class MapComponent implements AfterViewInit {
         shadowUrl: 'assets/marker-shadow.png'
       });
 
-      // Initialisation de la carte
       this.map = L.map('map').setView([33.5731, -7.5898], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(this.map);
 
-      this.map.on('click', (e: L.LeafletMouseEvent) => {
+      setTimeout(() => {
+        this.map.invalidateSize();  // ➡️ Forcer le recalcul de la taille
+      }, 0);
+
+      this.loadBusinessLocations();  // Charger les localisations des entreprises
+
+      // ➡️ Ajouter le gestionnaire de clics
+      this.map.on('click', (e: any) => {
         const { lat, lng } = e.latlng;
         this.locationSelected.emit({ lat, lng });
 
@@ -44,7 +48,20 @@ export class MapComponent implements AfterViewInit {
         } else {
           this.marker = L.marker(e.latlng).addTo(this.map);
         }
+        console.log(`Coordonnées sélectionnées: Latitude ${lat}, Longitude ${lng}`);
       });
     }
+  }
+
+  private loadBusinessLocations(): void {
+    this.businessService.getBusinessLocations().subscribe((locations: BusinessLocation[]) => {
+      import('leaflet').then(L => {
+        locations.forEach((location) => {
+          const marker = L.marker([location.latitude, location.longitude])
+            .addTo(this.map)
+            .bindPopup(`<b>${location.name}</b>`);
+        });
+      });
+    });
   }
 }
