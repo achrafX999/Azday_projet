@@ -13,6 +13,7 @@ import { BusinessProfilModule } from './pages/business-profil/business-profil.mo
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhoneVerificationModule } from './core/shared/authentification/phone-verification/phone-verification.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PhoneVerificationModule } from './core/shared/authentification/phone-ve
     SharedModule,
     BusinessListModule,
     BusinessProfilModule,
-    RouterModule.forRoot([]) // Ensure RouterModule is imported
+    RouterModule.forRoot([]),
+    NgbModule // Ensure RouterModule is imported
     
   ],
   providers: [provideHttpClient(withFetch())],

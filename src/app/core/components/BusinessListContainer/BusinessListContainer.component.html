@@ -1,19 +1,29 @@
 <div class="business-list-container">
   <!-- Titre et compteur de résultats -->
-  <div class="business-list-heading">
-    <h1>{{ category || 'Default Category' }} serving {{ city || 'your city' }} ON</h1>
-    <span>({{ totalResults }} Result(s))</span>
+  <div class="heading-filters-container">
+    <div class="business-list-heading">
+      <h1>{{ category || 'Default Category' }} serving {{ city || 'your city' }} ON</h1>
+      <span>({{ totalResults }} Result(s))</span>
+    </div>
+  
+    <div class="filters-container">
+      <!-- Premier bouton (vert) -->
+      <button class="filter-btn shop-online">Shop Online</button>
+    
+      <!-- Autres boutons (fond blanc, bordure grise) -->
+      <button class="filter-btn">Most Popular</button>
+      <button class="filter-btn">Open Now</button>
+      <button class="filter-btn">Online Messaging</button>
+      
+      <!-- Boutons avec flèche (Neighbourhood, Language) -->
+      <button class="filter-btn with-arrow">Neighbourhood</button>
+      <button class="filter-btn with-arrow">Language</button>
+    
+      <!-- Bouton bleu (Apply Filter) -->
+      <button class="apply-filter-btn">Apply Filter</button>
+    </div>
   </div>
-
-  <!-- Barres de filtres -->
-  <div class="filters-container">
-    <button class="filter-btn selected">Most Popular</button>
-    <button class="filter-btn">Open Now</button>
-    <button class="filter-btn">Online Messaging</button>
-    <button class="filter-btn">Neighbourhood</button>
-    <button class="filter-btn">Language</button>
-    <button class="apply-filter-btn">Apply Filter</button>
-  </div>
+  
 
   <!-- Affichage des business cards -->
   <div *ngFor="let business of paginatedBusinesses" class="business-card">
@@ -28,7 +38,11 @@
     </div>
 
     <div class="business-info">
-      <h2>{{ business.name }}</h2>
+      <h2>
+        <a [routerLink]="['/business-profil', business.id]">
+          {{ business.name }}
+        </a>
+      </h2>
       <p class="address">{{ business.address }}</p>
       <p class="description">{{ business.description }}</p>
       <p class="more-description">

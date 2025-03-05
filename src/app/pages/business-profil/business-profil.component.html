@@ -11,28 +11,33 @@
   <div class="left-section">
     <!-- Logo -->
     <div class="business-logo">
-      <img src="assets/plumbing-service-logo.png" alt="Business Logo">
+      <img [src]="getProfilePicture(businessData.profile_picture)" alt="Business Logo">
+      
     </div>
     
     <!-- Info (name, address, open status, buttons) -->
     <div class="info">
       <!-- Name & Address -->
-      <h3 >Royal Plumbing Services</h3>
-      <p class="address">614 Dufferin St, Toronto, ON M6K 2A9</p>
+      <h3>{{ businessData.name }}</h3>
+      <p class="address">{{ businessData.address }}</p>
       
       <!-- Open Now & Hours -->
       <p class="open-status">
-        <span class="open-now">Open Now</span>
+        <span class="open-now">{{ businessData.is_open ? 'Open Now' : 'Closed' }}</span>
         <a href="#" class="see-all-hours">See all hours</a>
       </p>
       
       <!-- Action Buttons -->
       <div class="actions">
-        <button class="btn phone">Phone Number</button>
-        <button class="btn website">Website</button>
+        <button class="btn phone" (click)="togglePhone()">Phone Number</button>
+        <button class="btn website" (click)="goToWebsite()">Website</button>
         <button class="btn message">Message</button>
         <button class="btn direction">Get Direction</button>
       </div>
+      <!-- Affichage conditionnel du numéro de téléphone -->
+        <div *ngIf="showPhone" class="phone-display">
+          {{ businessData.phone_number }}
+        </div>
     </div>
   </div>
 
@@ -40,14 +45,26 @@
   <div class="right-section">
     <!-- Icons (Heart, Share, Print) -->
     <div class="icon-actions">
-      <span class="icon heart" title="Add to Favorites"></span>
-      <span class="icon share" title="Share"></span>
-      <span class="icon print" title="Print"></span>
+      <span class="icon heart"
+            title="Helpful"
+            [ngClass]="{'clicked': helpfulClicked}"
+            (click)="onHelpfulClick()">
+      </span>
+      <span class="icon share"
+            title="Share"
+            (click)="onShareClick()">
+      </span>
+      <span class="icon print"
+            title="Report"
+            [ngClass]="{'clicked': reportClicked}"
+            (click)="onReportClick()">
+      </span>
     </div>
+    
+    
 
     <!-- Rating & Reviews -->
     <div class="rating-reviews">
-      <!-- Stars -->
       <div class="stars">
         <span class="star filled"></span>
         <span class="star filled"></span>
@@ -55,106 +72,120 @@
         <span class="star filled"></span>
         <span class="star filled"></span>
       </div>
-      <span class="review-count">(70)</span>
+      <span class="review-count">({{ businessData.reviewCount || 70 }})</span>
       <a href="#" class="read-reviews">Read Reviews</a>
     </div>
   </div>
 </div>
 
-    <!-- Combined Details and Location Section -->
-    <div class="combined-section">
-      <!-- Details Section -->
-      <div class="details-section">
-        <h2>Details & Description</h2>
-        <p>Call Royal Plumbing Services today for great service at reasonable rates. We are Toronto plumbers who offer fast and reliable drain and pipe unclogging, sewer cleaning, plumbing repairs, and much more. Visit our website for the full list of services we offer.</p>
-  
+<div class="combined-section">
+  <!-- Colonne de gauche : Détails + (Produits / Spécialités) -->
+  <div class="details-section">
+    <h2>Details & Description</h2>
+    <p>{{ businessData.description }}</p>
+
+    <!-- On regroupe "Products and Services" et "Specialties" dans un conteneur flex -->
+    <div class="products-specialties">
+      <div class="products">
         <h2>Products and Services</h2>
         <ul>
-          <li>Free Quotes On Any Job</li>
-          <li>Plumbing</li>
-          <li>Drain Pipe Repair</li>
-          <li>Bathroom Sink Repair</li>
-          <li>Faucet Repair</li>
-          <li>Dripping Tap</li>
-          <li>Leaking Toilet</li>
-          <li>Kitchen Sink Repair</li>
-          <li>Shower Repair</li>
-          <li>Water Lock</li>
-          <li>ETC...</li>
+          <li *ngFor="let service of businessData.product_services">{{ service }}</li>
         </ul>
-  
+      </div>
+      <div class="specialties">
         <h2>Specialties</h2>
         <ul>
-          <li>Certified By TSSA And ComplyWorks</li>
-          <li>Certified By The BBB As +AAA</li>
-          <li>Fully Insured By WSIB</li>
+          <li *ngFor="let specialty of businessData.specialize">{{ specialty }}</li>
         </ul>
       </div>
-  
-        <!-- Location Section -->
-        <div class="location-section">
-          <h2>Location</h2>
-          <a href="#" class="view-map">View Map</a>
-          <div class="location-list">
-            <p>NEWOOD</p>
-            <p>The Gap Group Locals</p>
-            <p>Ware Traffic Park</p>
-            <p>Royal Free Hospital</p>
-            <p>Terra Terra BELSIZE PARK</p>
-            <p>Niclosode</p>
-            <p>Primate</p>
-            <p>Motor Int</p>
-            <p>Pramos</p>
-            <p>Queens Park</p>
-            <p>STJUNNS</p>
-            <p>25LL</p>
-            <p>WOOD</p>
-            <p>WEST MILBURGGoogle</p>
-            <p>AUDIA VALE</p>
-            <p>614 Dufferin St, Toronto, ON M6K 2A9</p>
-          </div>
-        </div>
     </div>
-
-    <div class="gallery-container">
-      <h2>Gallery</h2>
-      <div class="gallery">
-          <img src="image1.jpg" alt="Plumbing Tools">
-          <img src="image2.jpg" alt="Plumbing Logo">
-          <img src="image3.jpg" alt="Fixing Pipes">
-          <img src="image4.jpg" alt="Plumber at Work">
-          <img src="image5.jpg" alt="Inspection">
-      </div>
   </div>
 
-  <div class="business-info">
-    <div class="info-section">
-        <h4>Languages Spoken</h4>
-        <ul>
-            <li>English</li>
-        </ul>
-    </div>
-
-    <div class="info-section">
-        <h4>Methods of Payment:</h4>
-        <div class="payment-icons">
-            <img src="assets/cash-icon.png" alt="Cash">
-            <img src="assets/mastercard-icon.png" alt="Mastercard">
-            <img src="assets/visa-icon.png" alt="Visa">
-        </div>
-    </div>
-
-    <div class="info-section">
-        <h4>Opening Hours</h4>
-        <div class="opening-hours">
-            <select>
-                <option>Thursday</option>
-                <!-- Add more days if needed -->
-            </select>
-            <input type="text" value="7:00 AM - 7:00 PM" readonly>
-        </div>
-    </div>
+  <!-- Colonne de droite : Map + Adresse -->
+  <div class="location-section">
+    <h2>Location</h2>
+    <a href="#" class="view-map">View Map</a>
+    <app-map></app-map>
+    <p class="address">{{ businessData.address }}</p>
+  </div>
 </div>
+
+<!-- Galerie d'images en dessous -->
+<div class="gallery-container">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img
+      *ngFor="let img of businessData.images"
+      [src]="getGalleryImageUrl(img.image)"
+      alt="Business Gallery Image"
+    />
+  </div>
+</div>
+
+<!-- Nouvelle section pour Languages, Payment, Opening Hours -->
+<div class="additional-info-container">
+  <!-- Bloc 1 : Languages -->
+  <div class="info-section languages">
+    <h4>Languages Spoken</h4>
+    <ul>
+      <li *ngFor="let item of businessData.languages | keyvalue">
+        {{ item.value }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bloc 2 : Methods of Payment -->
+  <div class="info-section payment">
+    <h4>Methods of Payment</h4>
+    <ul>
+      <li *ngFor="let item of businessData.payment_methods | keyvalue">
+        {{ item.value }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bloc 3 : Opening Hours -->
+  <div class="info-section opening-hours">
+    <h4>Opening Hours</h4>
+    <div class="opening-hour-dropdown">
+      <!-- Dropdown existant -->
+      <div class="selected-day" (click)="toggleDropdown()">
+        <span class="day-text">
+          {{ daysOfWeek[selectedDayIndex] }} 
+          {{
+            transformTimeToAmPm(getOpenCloseTime(daysOfWeek[selectedDayIndex]).open)
+          }} 
+          - 
+          {{
+            transformTimeToAmPm(getOpenCloseTime(daysOfWeek[selectedDayIndex]).close)
+          }}
+        </span>
+        <span class="chevron"></span>
+      </div>
+      <div class="dropdown-menu" *ngIf="showDropdown">
+        <div class="dropdown-item" 
+             *ngFor="let day of daysOfWeek; let i = index" 
+             (click)="selectDay(i)">
+          {{ day }} 
+          {{
+            transformTimeToAmPm(getOpenCloseTime(day).open)
+          }}
+          -
+          {{
+            transformTimeToAmPm(getOpenCloseTime(day).close)
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="review-section">
+  <!-- Les sections de reviews peuvent être également rendues dynamiquement -->
+  <!-- ... contenu des reviews ... -->
+</div>
+
 
 <div class="review-section">
   <!-- Review Content -->

@@ -1,301 +1,337 @@
 .home-content {
-    display: flex;
-    flex-direction: column; /* Dispose les éléments verticalement */
-    min-height: 75vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
-    justify-content: space-between; /* Place le footer en bas si le contenu est insuffisant */
-  }
-/* The main card container */
+  display: flex;
+  flex-direction: column; /* Dispose les éléments verticalement */
+  min-height: 75vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
+  justify-content: space-between; /* Place le footer en bas si le contenu est insuffisant */
+}
+
+/* Section combinée Détails & Map */
+.combined-section {
+  display: flex;
+  justify-content: space-between; 
+  gap: 2rem;                /* Espace horizontal entre la colonne de gauche et la colonne de droite */
+  margin: 20px auto;        /* Centré horizontalement, marge verticale */
+  max-width: 1200px;        /* Ajustez la largeur max selon votre design */
+}
+
+/* Colonne de gauche */
+.details-section {
+  flex: 2;                   /* Occupe plus d'espace que la colonne de droite */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Conteneur qui regroupe "Products" et "Specialties" */
+.products-specialties {
+  display: flex;
+  gap: 2rem;        /* Espace horizontal entre les 2 colonnes */
+  margin-top: 1.5rem; /* Espace au-dessus, sous la description */
+}
+
+.products,
+.specialties {
+  flex: 1; /* Chaque colonne prend la place nécessaire */
+}
+
+.products h2,
+.specialties h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Colonne de droite */
+.location-section {
+  flex: 1;
+  text-align: left;
+}
+
+.location-section h2 {
+  margin-bottom: 10px;
+}
+
+.view-map {
+  display: block;
+  color: #007BFF;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.view-map:hover {
+  text-decoration: underline;
+}
+
+/* Galerie (vous conservez vos règles existantes) */
+.gallery-container {
+  margin: 20px auto;
+  max-width: 1200px; /* Aligné avec combined-section */
+  /* etc. */
+}
+
+/* Conteneur principal de la carte d'affaire */
 .business-card-container {
-    display: flex;
-    justify-content: space-between;  /* Left section on one side, right on the other */
-    align-items: center;            /* Vertically center them */
-    background: #F5F4F8;
-    border-radius: 12px;
-    padding: 1rem 2rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* optional subtle shadow */
-    gap: 1rem; /* spacing between left/right sections on small screens */
-    margin: 7%;  /* Centers it */
-  max-width: 90%;  /* Prevents it from stretching too much */
-  padding: 1rem;   /* Adds space inside */
-  }
+  display: flex;
+  justify-content: space-between; /* Sépare la section gauche et droite */
+  align-items: center; /* Centre verticalement */
+  background: #F5F4F8;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* ombre légère */
+  gap: 1rem;
   
-  /* Left Section (Logo + Info) */
-  .left-section {
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* space between logo and text block */
-  }
+  /* Passez de 1rem à 2rem de padding pour plus de hauteur interne */
+  padding: 2rem;
   
-  /* Business Logo */
-  .business-logo img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* circle logo, or use 8px if you want rounded square */
-    object-fit: cover;
-  }
+  /* Réduisez la marge horizontale ou laissez 7% si vous voulez la même indentation */
+  margin: -2% 7%; /* 5% en haut et en bas, centré horizontalement */
   
-  /* Info block */
-  .info {
-    display: flex;
-    flex-direction: column; 
-  }
-  
-  /* Business Name */
-  .business-name {
-    font-size: 1rem; /* Reduce size */
-    font-weight: 600; /* Keep it bold but not too heavy */
-    margin: 0 0 0.2rem;
-    color: #081A48;
-  }
-  
-  
-  /* Address */
-  .address {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #455A64;
-  }
-  
-  /* Open Now & See all hours */
-  .open-status {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-    color: #455A64;
-  }
-  .open-now {
-    color: #97D721;
-    font-weight: 600;
-    margin-right: 0.5rem;
-  }
-  .see-all-hours {
-    color: #0097D7;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* Action buttons (Phone, Website, etc.) */
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  .btn {
-    background: #97D721; /* green */
-    color: #fff;
-    font-weight: 500;
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  .btn.direction {
-    background: #0097D7; /* blue for 'Get Direction' */
-  }
-  .btn.phone::before {
-    content: "📞 ";
-  }
-  .btn.website::before {
-    content: "🔗 ";
-  }
-  .btn.message::before {
-    content: "✉️ ";
-  }
-  
-  /* Right Section (icons + rating) */
-  .right-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1rem;
-  }
-  
-  /* Icon Actions (Heart, Share, Print) */
-  .icon-actions {
-    display: flex;
-    gap: 0.4rem; /* Reduce spacing between icons */
-    align-items: center;
-  }
-  .icon {
-    width: 40px; /* Adjust button size */
+  /* Pour une largeur maximum plus large */
+  max-width: 1400px; /* Ajustez selon votre design (ou laissez 90%) */
+}
+
+/* Section de gauche (Logo + Infos) */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* espace entre le logo et le bloc de texte */
+}
+
+/* Logo d'affaire */
+.business-logo img {
+   width: 120px;     /* au lieu de 80px */
+  height: 120px;    /* au lieu de 80px */
+  border-radius: 50%; /* logo circulaire */
+  object-fit: cover;
+}
+
+.info h3 {
+  font-size: 1.8rem; /* titre plus grand */
+  margin: 0 0 0.5rem;
+  color: #081A48;    /* un bleu foncé, par exemple */
+}
+
+/* Bloc d'infos */
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* (Note : la classe .business-name a été supprimée car non utilisée dans le HTML) */
+
+/* Adresse */
+.address {
+  font-size: 1rem;   /* un peu plus grand que 0.9rem */
+  color: #455A64;
+  margin-bottom: 0.5rem; /* espace sous l’adresse */
+}
+
+/* Statut d'ouverture */
+.open-status {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: #455A64;
+  margin-bottom: 1rem; /* espace sous le statut */
+}
+.open-now {
+  color: #97D721;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.see-all-hours {
+  color: #0097D7;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Boutons d'action */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.btn {
+  font-size: 1rem;
+  background: #97D721; /* vert */
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+}
+.btn.direction {
+  background: #0097D7; /* bleu pour 'Get Direction' */
+}
+.btn.phone::before {
+  content: "📞 ";
+}
+.btn.website::before {
+  content: "🔗 ";
+}
+.btn.message::before {
+  content: "✉️ ";
+}
+
+/* Section de droite (icônes + évaluations) */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+/* Actions sur icônes (Favoris, Partager, Imprimer) */
+.icon-actions {
+  display: flex;
+  gap: 0.4rem; /* espacement réduit entre icônes */
+  align-items: center;
+}
+.icon {
+  width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #0097D7; /* Blue border */
-  border-radius: 40%; /* Circular shape */
+  border: 2px solid #0097D7; /* bordure bleue */
+  border-radius: 40%; /* forme circulaire */
   cursor: pointer;
   background-color: white;
-  background-size: 60%; /* Reduce PNG icon size */
+  background-size: 60%; /* taille réduite pour les icônes PNG */
   background-position: center;
   background-repeat: no-repeat;
-  padding: 2px; /* Reduce padding to fit icon */
-  }
-  /* Example placeholders: replace with your actual icon paths or FontAwesome classes */
-  .icon.heart {
-    color: #0097D7;
-    border-color: #0097D7;
-    background-image: url('../../../assets/heart.png');
-  }
-  .icon.share {
-    color: #0097D7;
-    border-color: #0097D7;
-    background-image: url('../../../assets/share.png');
-  }
-  .icon.print {
-    color: red;
-    border-color: red;
-    background-image: url('../../../assets/print.png');
-  }
-  
-  /* Rating & Reviews (stars + link) */
-  .rating-reviews {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.9rem;
-  }
-  .stars {
-    display: flex;
-  }
-  .star {
-    width: 18px;
-    height: 18px;
-    background: #ebbe51; /* gold star */
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 67% 57%, 
-                       79% 91%, 50% 70%, 21% 91%, 33% 57%, 
-                       2% 35%, 39% 35%);
-  }
-  .review-count {
-    margin: 0 0.25rem;
-  }
-  .read-reviews {
-    color: #0097D7;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  .combined-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px; /* Adjust as needed */
-    margin: 7%;
-  }
-  
-  .details-section {
-    flex: 2; /* Takes more space */
-    margin-right: 20px; /* Space between details and location */
-  }
-  
-  .location-section {
-    flex: 1; /* Takes less space */
-    text-align: left; /* Aligns content to the left */
-  }
-  
-  .location-section h2 {
-    margin-bottom: 10px; /* Space below the heading */
-  }
-  
-  .view-map {
-    display: block;
-    color: #007BFF; /* Blue color for the link */
-    text-decoration: none;
-    margin-bottom: 10px; /* Space below the link */
-  }
-  
-  .view-map:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-  
-  .location-list {
-    max-height: 300px; /* Limit height for scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 1px solid #ddd; /* Border for the list */
-    padding: 10px; /* Padding inside the list */
-    border-radius: 5px; /* Rounded corners */
-  }
-  
-  .location-list p {
-    margin: 5px 0; /* Space between list items */
-    font-size: 14px; /* Adjust font size */
-  }
-  .gallery-container {
-    position: relative;
-    width: 1277px;
-    height: 353px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: thin;
-    scrollbar-color: #aaa transparent;
-    margin: 7%;
-
+  padding: 2px; /* espacement interne réduit */
+}
+/* Styles par défaut */
+.icon.heart {
+  color: #0097D7;
+  border-color: #0097D7;
+  background-image: url('../../../assets/heart.png');
+}
+.icon.print { 
+  color: red;
+  border-color: red;
+  background-image: url('../../../assets/print.png');
 }
 
-.gallery {
-    display: flex;
-    gap: 20px;
+/* Styles pour l'état "clicked" */
+.icon.heart.clicked {
+  background-image: url('../../../assets/heart_filled.png'); /* Assurez-vous d'avoir cette image */
+  background-color: #0097D7;
+  color: #fff;
+}
+.icon.print.clicked {
+  background-image: url('../../../assets/print_filled.png'); /* Ou modifiez le style pour montrer l'état rempli */
+  background-color: red;
+  color: #fff;
 }
 
-.gallery img {
-    width: 416px;
-    height: 285px;
-    object-fit: cover;
-    border-radius: 10px;
+/* Pour l'icône share, vous pouvez éventuellement ajouter un style similaire si souhaité */
+
+
+.icon.share {
+  color: #0097D7;
+  border-color: #0097D7;
+  background-image: url('../../../assets/share.png');
+}
+/* Évaluations et Avis */
+.rating-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+.stars {
+  display: flex;
+}
+.star {
+  width: 22px; /* agrandir l’étoile */
+  height: 22px;
+  background: #ebbe51; /* étoile dorée */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 67% 57%, 
+                     79% 91%, 50% 70%, 21% 91%, 33% 57%, 
+                     2% 35%, 39% 35%);
+}
+/* Première définition de .review-count (pour la section d'évaluation) */
+.review-count {
+  margin: 0 0.25rem;
+}
+.read-reviews {
+  color: #0097D7;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-
-.business-info {
+/* Section combinée Détails & Localisation */
+.combined-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  font-family: 'Poppins', sans-serif;
+  margin-top: 20px; /* ajustement selon besoin */
   margin: 7%;
 }
+.details-section {
+  flex: 2; /* occupe plus d'espace */
+  margin-right: 20px; /* espacement entre détails et localisation */
+}
+.location-section {
+  flex: 1; /* occupe moins d'espace */
+  text-align: left;
+}
+.location-section h2 {
+  margin-bottom: 10px;
+}
+.view-map {
+  display: block;
+  color: #007BFF; /* bleu */
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.view-map:hover {
+  text-decoration: underline;
+}
+/* La règle .location-list a été supprimée car non utilisée */
 
+/* Galerie d'images */
+.gallery-container {
+  position: relative;
+  width: 1277px;
+  height: 353px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+  margin: 7%;
+}
+.gallery {
+  display: flex;
+  gap: 20px;
+}
+.gallery img {
+  width: 416px;
+  height: 285px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Sections d'infos complémentaires */
 .info-section {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 7%;
 }
-
 h4 {
   color: #263238;
   font-size: 16px;
   margin-bottom: 5px;
 }
-
 ul {
   list-style-type: disc;
   padding-left: 20px;
   margin: 0;
 }
+/* Les règles relatives aux icônes de paiement ont été retirées car non utilisées */
 
-.payment-icons {
-  display: flex;
-  gap: 10px;
-}
+/* (La règle select, input a été retirée car aucun élément de ce type n'est présent ici) */
 
-.payment-icons img {
-  width: 40px;
-  height: auto;
-}
-
-.opening-hours {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-select, input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
+/* Conteneur et résumé des avis */
 .review-container {
   display: flex;
   justify-content: space-between;
@@ -306,33 +342,27 @@ select, input {
   max-width: 900px;
   margin: 20px auto;
 }
-
 .review-summary {
   width: 50%;
 }
-
 h3 {
   color: #333;
   font-size: 18px;
   margin-bottom: 10px;
 }
-
 .rating-bars {
   margin-bottom: 15px;
 }
-
 .rating-row {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 5px;
 }
-
 .rating-row span {
   font-size: 14px;
   color: #444;
 }
-
 .bar {
   width: 150px;
   height: 6px;
@@ -340,51 +370,44 @@ h3 {
   border-radius: 3px;
   overflow: hidden;
 }
-
 .fill {
   height: 100%;
   background: #ffb400;
 }
-
 .overall-rating {
   font-size: 18px;
   font-weight: bold;
   color: #333;
 }
-
 .rating-value {
   color: #ffb400;
   font-size: 20px;
 }
-
+/* Deuxième définition de .review-count (pour le résumé d'avis) : 
+   Pour éviter la confusion, vous pouvez renommer ce sélecteur si nécessaire */
 .review-count {
   font-size: 14px;
   color: #666;
   margin-left: 10px;
 }
-
 .recommendation {
   font-size: 16px;
   color: #333;
   margin-top: 10px;
 }
-
 .review-info {
   width: 40%;
   text-align: left;
 }
-
 .review-info p {
   font-size: 14px;
   color: #666;
   line-height: 1.5;
 }
-
 .review-info a {
   color: #007bff;
   text-decoration: none;
 }
-
 .write-review {
   margin-top: 10px;
   padding: 8px 15px;
@@ -396,12 +419,11 @@ h3 {
   font-weight: bold;
   color: #333;
 }
-
 .write-review:hover {
   background: #f0f0f0;
 }
 
-/* Customer Reviews Container */
+/* Avis clients */
 .customer-reviews {
   max-width: 800px;
   margin: 20px auto;
@@ -411,35 +433,120 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-family: 'Poppins', sans-serif;
 }
-
-/* Individual Review */
 .review {
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .review:last-child {
-  border-bottom: none; /* Remove border for the last review */
+  border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
-
-/* Review Header */
 .review-header {
   margin-bottom: 10px;
 }
-
 .username {
   font-size: 16px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.8);
 }
-
-/* Review Content */
 .review-content p {
   font-size: 14px;
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.6;
   margin: 0;
 }
+
+/* Dropdown des horaires d'ouverture */
+.opening-hour-dropdown {
+  position: relative;
+  width: 360px; /* ajustez selon le design */
+  margin-bottom: 20px;
+}
+.selected-day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F5F4F8;
+  border: 1px solid #C5D3D3;
+  border-radius: 8px;
+  padding: 16px 10px;
+  cursor: pointer;
+}
+.day-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #455A64;
+}
+.chevron {
+  width: 10px;
+  height: 10px;
+  background: url('/assets/chevron.png') no-repeat center center;
+  background-size: contain;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 60px; /* ajustez la distance sous la sélection */
+  left: 0;
+  width: 100%;
+  background: #FFF;
+  border: 1px solid #C5D3D3;
+  border-radius: 8px;
+  z-index: 100;
+}
+.dropdown-item {
+  padding: 10px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #455A64;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+.dropdown-item:hover {
+  background: #f5f4f8;
+}
+
+/* Conteneur global pour Languages, Payment, Opening Hours */
+.additional-info-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;           /* Espace horizontal entre les blocs */
+  margin: 20px auto;   /* Centré horizontalement, marge verticale */
+  max-width: 1600px;   /* Ajustez selon votre design */
+}
+
+/* Chaque bloc (info-section) occupe une colonne */
+.info-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info-section h4 {
+  font-size: 1.5rem; /* Taille de police pour harmoniser */
+  margin-bottom: 0.5rem;
+  color: #263238;    /* Même couleur pour tous */
+}
+
+/* Liste interne */
+.info-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Opening Hours - ajuster la taille du texte si besoin */
+.opening-hour-dropdown {
+  margin-top: 1rem; /* Espace au-dessus du dropdown */
+}
+
+/* Ajuster la taille de .day-text si trop grande ou trop petite */
+.day-text {
+  font-size: 1rem; 
+}
+

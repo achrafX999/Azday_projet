@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'add-business', component: AddBusinessComponent },
   { path: 'verify-phone', component: PhoneVerificationComponent },
   { path: 'business-list', component:BusinessListComponent }, 
-  { path: 'business-profil', component:BusinessProfilComponent},
+  { path: 'business-profil/:id', component: BusinessProfilComponent },
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, // Default redirection
   { path: '**', redirectTo: '/sign-in' }, // Handle invalid routes
 ];
