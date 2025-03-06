@@ -11,8 +11,9 @@ import { RouterModule } from '@angular/router';
 import { BusinessListModule } from './pages/business-list/business-list.module';
 import { BusinessProfilModule } from './pages/business-profil/business-profil.module';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhoneVerificationModule } from './core/shared/authentification/phone-verification/phone-verification.module';
+import { ContactUsModule } from './pages/contact_us/contact_us.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import { PhoneVerificationModule } from './core/shared/authentification/phone-ve
     SharedModule,
     BusinessListModule,
     BusinessProfilModule,
+    ContactUsModule,
+    FormsModule,
     RouterModule.forRoot([]) // Ensure RouterModule is imported
     
   ],
