@@ -1,25 +1,25 @@
 <div class="map-wrapper">
-  <!-- 1) Le grand rectangle bleu arrondi en haut -->
+  <!-- 1) Fond bleu arrondi en haut -->
   <div class="map-bg"></div>
 
-  <!-- 2) L’onglet (tab) bleu qui dépasse sur la carte -->
+  <!-- 2) Onglet bleu qui dépasse sur la carte -->
   <div class="map-tab">
     <h2>Discover businesses in your area</h2>
   </div>
 
-  <!-- 3) La carte -->
+  <!-- 3) Conteneur de la carte -->
   <div class="map-container">
-    <app-map></app-map>
+    <!-- La div avec l'id 'map-section' où Leaflet initialisera la carte -->
+    <div id="map-section" style="height: 400px;"></div>
 
-    <!-- 4) Bloc "Location Near You" -->
+    <!-- 4) Bloc "Location Near You" (exemple statique ou à rendre dynamique) -->
     <div class="location-near-you">
       <div class="location-header">
-        <h3>Location Near you</h3>
+        <h3>Location Near You</h3>
         <a class="view-all" href="#">view all</a>
       </div>
-
       <div class="location-cards">
-        <!-- Exemple d'une carte -->
+        <!-- Exemple d'une carte statique, à remplacer par une itération si besoin -->
         <div class="location-card">
           <div class="image-wrapper">
             <img src="assets/laundry.jpg" alt="Laundry Service" />
@@ -31,11 +31,8 @@
             <div class="place">Jakarta, Indonesia</div>
           </div>
         </div>
-
-        <!-- Ajoutez ou dupliquez plus de .location-card selon vos besoins -->
+        <!-- Vous pouvez ajouter d'autres location-card ici -->
       </div>
     </div>
-    <!-- Fin du bloc "Location Near You" -->
-
   </div>
 </div>

@@ -47,10 +47,12 @@ export class BusinessProfilComponent implements OnInit {
   }
 
   // Fonction qui bascule l'affichage du dropdown
-  toggleDropdown(): void {
+  toggleDropdown(event: Event): void {
+    event.stopPropagation();
     this.showDropdown = !this.showDropdown;
     console.log('Dropdown toggled:', this.showDropdown);
   }
+  
 
   // Fonction pour sélectionner un jour et fermer le dropdown
   selectDay(index: number): void {

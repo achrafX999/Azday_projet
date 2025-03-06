@@ -1,11 +1,13 @@
 <app-header></app-header>
 
 <div class="main-content">
-  <div class="add-business-container">
-    <!-- Section gauche -->
-    <div class="left-section">
-      <h1>List your Business</h1>
-      <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
+    <!-- Conteneur Flex pour aligner la section gauche et la section droite -->
+    <div class="form-content">
+      <!-- Section gauche -->
+      <div class="left-section">
+        <h1>List your Business</h1>
+        
         <!-- Choisir la catégorie -->
         <div class="form-group">
           <label for="category">Choose Category</label>
@@ -16,7 +18,6 @@
             </option>
           </select>
         </div>
-        
 
         <!-- Nom du Business -->
         <div class="form-group">
@@ -101,86 +102,71 @@
           <label for="description">Add Description</label>
           <textarea id="description" rows="4" placeholder="Type here" formControlName="description"></textarea>
         </div>
-
-        
-
-        <!-- Bouton de soumission -->
-        
-      </form>
-    </div>
-
-    <!-- Section droite (inchangée) -->
-    <div class="right-section">
-      <!-- Bloc de la carte -->
-      <div class="map-container">
-        <h3>Location</h3>
-        <app-map (locationSelected)="onLocationSelected($event)"></app-map>
-
       </div>
-
-      <app-opening-hours (openingHoursChanged)="onOpeningHoursChanged($event)"></app-opening-hours>
-
-      <div class="profile-picture">
-        <h3>Add Profile Picture</h3>
-        
-        <!-- Conteneur qui déclenche le champ file -->
-        <div class="picture-placeholder" (click)="profilePictureInput.click()">
-          <!-- Si l'utilisateur a sélectionné une image, on l'affiche -->
-          <img *ngIf="profilePicturePreview; else defaultPlaceholder"
-               [src]="profilePicturePreview"
-               alt="Profile Picture"
-               style="width: 100%; height: 100%; object-fit: cover;" />
-               
-          <!-- Si aucune image n'est sélectionnée, on affiche l'icône par défaut -->
-          <ng-template #defaultPlaceholder>
-            <i class="image-icon"></i>
-          </ng-template>
+      
+      <!-- Section droite -->
+      <div class="right-section">
+        <!-- Bloc de la carte -->
+        <div class="map-container">
+          <h3>Location</h3>
+          <app-map (locationSelected)="onLocationSelected($event)"></app-map>
         </div>
-        
-        <!-- Bouton "Add More" (optionnel) -->
-        <button type="button" class="add-more-btn" (click)="profilePictureInput.click()">Add More</button>
-      
-        <!-- Champ file caché -->
-        <input type="file"
-               #profilePictureInput
-               (change)="onProfilePictureSelected($event)"
-               accept="image/*"
-               hidden />
-      </div>
-      
 
-      <!-- Bloc d'ajout d'images supplémentaires -->
-      <div class="images">
-        <h3>Add Images</h3>
-        <div class="images-grid">
-          <!-- Itération sur le tableau imagesPreviews -->
-          <div class="image-slot" *ngFor="let preview of imagesPreviews; let i = index">
-            <!-- Conteneur absolument positionné -->
-            <div class="image-slot-content">
-              <ng-container *ngIf="preview; else defaultIcon">
-                <img [src]="preview" alt="Selected Image" />
-              </ng-container>
-              <ng-template #defaultIcon>
-                <i class="image-icon"></i>
-              </ng-template>
-              <input
-                type="file"
-                #fileInput
-                (change)="onImageSelected($event, i)"
-                accept="image/*"
-                class="file-input-overlay"
-              />
-            </div>
+        <!-- Composant des horaires d'ouverture -->
+        <app-opening-hours (openingHoursChanged)="onOpeningHoursChanged($event)"></app-opening-hours>
+
+        <!-- Bloc d'ajout de la photo de profil -->
+        <div class="profile-picture">
+          <h3>Add Profile Picture</h3>
+          <div class="picture-placeholder" (click)="profilePictureInput.click()">
+            <img *ngIf="profilePicturePreview; else defaultPlaceholder"
+                 [src]="profilePicturePreview"
+                 alt="Profile Picture"
+                 style="width: 100%; height: 100%; object-fit: cover;" />
+            <ng-template #defaultPlaceholder>
+              <i class="image-icon"></i>
+            </ng-template>
           </div>
-          
-        <button type="button" class="add-more-btn" (click)="addMoreImageSlot()">Add More</button>
-      </div>     
+          <button type="button" class="add-more-btn" (click)="profilePictureInput.click()">Add More</button>
+          <input type="file"
+                 #profilePictureInput
+                 (change)="onProfilePictureSelected($event)"
+                 accept="image/*"
+                 hidden />
+        </div>
+
+        <!-- Bloc d'ajout d'images supplémentaires -->
+        <div class="images">
+          <h3>Add Images</h3>
+          <div class="images-grid">
+            <div class="image-slot" *ngFor="let preview of imagesPreviews; let i = index">
+              <div class="image-slot-content">
+                <ng-container *ngIf="preview; else defaultIcon">
+                  <img [src]="preview" alt="Selected Image" />
+                </ng-container>
+                <ng-template #defaultIcon>
+                  <i class="image-icon"></i>
+                </ng-template>
+                <input
+                  type="file"
+                  #fileInput
+                  (change)="onImageSelected($event, i)"
+                  accept="image/*"
+                  class="file-input-overlay"
+                />
+              </div>
+            </div>
+            <button type="button" class="add-more-btn" (click)="addMoreImageSlot()">Add More</button>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    <!-- Bouton de soumission placé en dehors du conteneur flex -->
     <div class="upload-button-container">
       <button type="submit" class="upload-btn">Upload Now</button>
     </div>
-  </div>
-</div>
+  </form>
 </div>
 
 <app-footer></app-footer>
