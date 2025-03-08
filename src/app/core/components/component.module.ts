@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MapSectionComponent } from './home/map-section/map-section.component';
 import { ReviewComponent } from './home/review/review.component';
 import { BusinessListContainerComponent } from './BusinessListContainer/BusinessListContainer.component';
+import { Contact_usComponent } from '../../pages/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { BusinessListContainerComponent } from './BusinessListContainer/Business
     RecentlyViewedComponent,
     MapSectionComponent,
     ReviewComponent,
+    Contact_usComponent,
     BusinessListContainerComponent
   ],
   imports: [

@@ -41,21 +41,23 @@
 }
 
 .circle-image {
-        /* Ellipse 152 */
-    
-    position: absolute;
-    width: 710px; /* Réduction de la largeur */
-    height: 660px; /* Réduction de la hauteur */
-    left: 53%; /* Ajustement de la position gauche pour centrer */
-    top: 440px; /* Ajustement de la position verticale */
-    background-size: cover; /* Maintient l'image bien adaptée */
-    background: url('../../../../assets/moroccan-door.jpg');
-    box-shadow: -5px 11px 22.7px 6px rgba(0, 0, 0, 0.15);
-    border-radius: 50%; /* Forme circulaire */
-    background-size: cover; /* Assure que l'image couvre tout le cercle */
-    transform: translate(-50%, -50%);
-    
-  }
+  position: absolute;
+  width: 710px; /* Adjust width */
+  height: 660px; /* Adjust height */
+  left: 53%; /* Centering horizontally */
+  top: 440px; /* Adjust vertical positioning */
+  background: url('../../../../assets/moroccan-door.jpg');
+  box-shadow: -5px 11px 22.7px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 50%; /* Makes it circular */
+  background-size: cover; /* Ensures the image covers the whole circle */
+  background-position: center center; /* Default centering */
+  transform: translate(-50%, -50%);
+}
+
+/* Move the image inside the circle */
+.circle-image.move-left {
+  background-position: left center; /* Moves image left */
+}
   
   /* Conteneur pour la légende du logo */
 .logo-caption {

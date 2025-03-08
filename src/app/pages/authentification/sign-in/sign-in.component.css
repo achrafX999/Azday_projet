@@ -38,21 +38,23 @@
 }
 
 .circle-image {
-        /* Ellipse 152 */
-    
     position: absolute;
-    width: 710px; /* Réduction de la largeur */
-    height: 660px; /* Réduction de la hauteur */
-    left: 53%; /* Ajustement de la position gauche pour centrer */
-    top: 440px; /* Ajustement de la position verticale */
-    background-size: cover; /* Maintient l'image bien adaptée */
+    width: 710px; /* Adjust width */
+    height: 660px; /* Adjust height */
+    left: 53%; /* Centering horizontally */
+    top: 440px; /* Adjust vertical positioning */
     background: url('../../../../assets/moroccan-door.jpg');
     box-shadow: -5px 11px 22.7px 6px rgba(0, 0, 0, 0.15);
-    border-radius: 50%; /* Forme circulaire */
-    background-size: cover; /* Assure que l'image couvre tout le cercle */
+    border-radius: 50%; /* Makes it circular */
+    background-size: cover; /* Ensures the image covers the whole circle */
+    background-position: center center; /* Default centering */
     transform: translate(-50%, -50%);
-    
-  }
+}
+
+/* Move the image inside the circle */
+.circle-image.move-left {
+    background-position: left center; /* Moves image left */
+}
   
   /* Conteneur pour la légende du logo */
 .logo-caption {
@@ -87,11 +89,11 @@
   .logo-image {
     position: absolute;  /* Retire le positionnement absolu */
     margin: 20px auto; /* Centre horizontalement et espace verticalement */
-    top:15%;
+    top:5%;
     left:48%;
     transform: translate(-50%, -50%);
-    width: 160px; /* Ajustez la largeur de l'image */
-    height: 100px;
+    max-width: 80px; /* Adjust based on your preference */
+    max-height: 50px;
     display: none;
   }
   .logo-caption{
