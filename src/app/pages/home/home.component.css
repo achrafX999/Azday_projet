@@ -30,4 +30,7 @@
   .growth-section {
     margin-top: 20px; /* Moins d’espace sur mobile */
   }
+  app-recently-viewed {
+    display: none;
+  }
 }

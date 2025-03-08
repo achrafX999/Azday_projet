@@ -104,8 +104,12 @@
   <div class="location-section">
     <h2>Location</h2>
     <a href="#" class="view-map">View Map</a>
-    <app-map></app-map>
-    <p class="address">{{ businessData.address }}</p>
+    <app-map *ngIf="businessData && businessData.latitude && businessData.longitude"
+    [latitude]="businessData.latitude" 
+    [longitude]="businessData.longitude" 
+    [selectable]="false">
+</app-map>
+<p class="address">{{ businessData.address }}</p>
   </div>
 </div>
 
@@ -148,16 +152,12 @@
     <h4>Opening Hours</h4>
     <div class="opening-hour-dropdown">
       <!-- Dropdown existant -->
-      <div class="selected-day" (click)="toggleDropdown()">
+      <div class="selected-day" (click)="toggleDropdown($event)">
         <span class="day-text">
           {{ daysOfWeek[selectedDayIndex] }} 
-          {{
-            transformTimeToAmPm(getOpenCloseTime(daysOfWeek[selectedDayIndex]).open)
-          }} 
+          {{ transformTimeToAmPm(getOpenCloseTime(daysOfWeek[selectedDayIndex]).open) }} 
           - 
-          {{
-            transformTimeToAmPm(getOpenCloseTime(daysOfWeek[selectedDayIndex]).close)
-          }}
+          {{ transformTimeToAmPm(getOpenCloseTime(daysOfWeek[selectedDayIndex]).close) }}
         </span>
         <span class="chevron"></span>
       </div>
@@ -166,15 +166,11 @@
              *ngFor="let day of daysOfWeek; let i = index" 
              (click)="selectDay(i)">
           {{ day }} 
-          {{
-            transformTimeToAmPm(getOpenCloseTime(day).open)
-          }}
-          -
-          {{
-            transformTimeToAmPm(getOpenCloseTime(day).close)
-          }}
+          {{ transformTimeToAmPm(getOpenCloseTime(day).open) }} - 
+          {{ transformTimeToAmPm(getOpenCloseTime(day).close) }}
         </div>
       </div>
+      
     </div>
   </div>
 </div>
