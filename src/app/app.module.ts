@@ -11,9 +11,8 @@ import { RouterModule } from '@angular/router';
 import { BusinessListModule } from './pages/business-list/business-list.module';
 import { BusinessProfilModule } from './pages/business-profil/business-profil.module';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhoneVerificationModule } from './core/shared/authentification/phone-verification/phone-verification.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     BusinessListModule,
     BusinessProfilModule,
-    RouterModule.forRoot([]),
-    NgbModule // Ensure RouterModule is imported
+    RouterModule.forRoot([]) // Ensure RouterModule is imported
     
   ],
   providers: [provideHttpClient(withFetch())],
