@@ -18,11 +18,14 @@
   </div>
   
   <!-- Boutons Desktop -->
-  <div class="buttons">
+  <div class="buttons" *ngIf="!isAuthenticated">
     <button class="btn join" routerLink="/sign-up">Join</button>
     <button class="btn login" routerLink="/sign-in">Log in</button>
   </div>
   
-  <!-- Menu Hamburger Mobile -->
+  
+  <div class="logout-container" *ngIf="isAuthenticated">
+    <button class="btn join" (click)="logout()">Logout</button>
+  </div>
   
 </nav>

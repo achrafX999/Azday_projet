@@ -38,7 +38,13 @@ export class BusinessProfilComponent implements OnInit {
       .subscribe(
         data => {
           this.businessData = data;
-          console.log('Business data:', this.businessData);
+          // Stocker en localStorage (ou sessionStorage) le dernier business consulté
+          localStorage.setItem('lastViewedBusiness', JSON.stringify({
+            id: this.businessData.id,
+            name: this.businessData.name,
+            subtitle: this.businessData.description, // ou tout autre champ
+            viewedDate: new Date().toISOString()     // Pour indiquer la date de consultation
+          }));
         },
         error => {
           console.error('Erreur lors de la récupération du business:', error);
