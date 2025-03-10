@@ -1,7 +1,7 @@
 .home-content {
     display: flex;
     flex-direction: column; /* Dispose les éléments verticalement */
-    min-height: 85vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
+    min-height: 60vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
     justify-content: space-between; /* Place le footer en bas si le contenu est insuffisant */
   }
   

@@ -2,7 +2,7 @@
 .home-content {
   display: flex;
   flex-direction: column;
-  min-height: 75vh;
+  min-height: 55vh;
   justify-content: space-between;
 }
 
@@ -430,3 +430,4 @@ h3 {
   padding-left: 20px;
   margin: 0;
 }
+
