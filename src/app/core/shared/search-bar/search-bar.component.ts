@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,10 +11,14 @@ import { Router } from '@angular/router';
 export class SearchBarComponent implements OnInit {
   category: string = '';
   city: string = '';
-  categorySuggestions: any[] = []; // Liste des catégories suggérées
-  recentSearches: { name: string; city: string; viewedDaysAgo: number }[] = []; // Stockage des recherches récentes
+  categorySuggestions: any[] = [];
+  recentSearches: { name: string; city: string; viewedDaysAgo: number }[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
     this.loadRecentSearches();
@@ -56,28 +61,30 @@ export class SearchBarComponent implements OnInit {
   }
 
   saveSearch(category: string, city: string) {
-    const search = {
-      name: category,
-      city,
-      viewedDaysAgo: 0 // New searches start as "viewed today"
-    };
-    
-    this.recentSearches.unshift(search);
-    if (this.recentSearches.length > 5) {
-      this.recentSearches.pop();
+    if (isPlatformBrowser(this.platformId)) {
+      const search = {
+        name: category,
+        city,
+        viewedDaysAgo: 0
+      };
+      
+      this.recentSearches.unshift(search);
+      if (this.recentSearches.length > 5) {
+        this.recentSearches.pop();
+      }
+      localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
     }
-    localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
   }
 
   loadRecentSearches() {
-    const storedSearches = localStorage.getItem('recentSearches');
-    if (storedSearches) {
-      this.recentSearches = JSON.parse(storedSearches).map((search: any) => {
-        return {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedSearches = localStorage.getItem('recentSearches');
+      if (storedSearches) {
+        this.recentSearches = JSON.parse(storedSearches).map((search: any) => ({
           ...search,
           viewedDaysAgo: this.calculateDaysAgo(search.date)
-        };
-      });
+        }));
+      }
     }
   }
 
@@ -90,6 +97,8 @@ export class SearchBarComponent implements OnInit {
 
   removeSearch(index: number) {
     this.recentSearches.splice(index, 1);
-    localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
+    }
   }
 }

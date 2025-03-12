@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-recent-searches',
@@ -8,19 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class RecentSearchesComponent implements OnInit {
   recentSearches: { name: string; city: string; viewedDaysAgo: number }[] = [];
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
     this.loadRecentSearches();
   }
 
   loadRecentSearches() {
-    const storedSearches = localStorage.getItem('recentSearches');
-    if (storedSearches) {
-      this.recentSearches = JSON.parse(storedSearches).map((search: any) => ({
-        ...search,
-        viewedDaysAgo: this.calculateDaysAgo(search.date || new Date().toISOString())
-      }));
+    if (isPlatformBrowser(this.platformId)) {  // ✅ Ensuring browser environment
+      const storedSearches = localStorage.getItem('recentSearches');
+      if (storedSearches) {
+        this.recentSearches = JSON.parse(storedSearches).map((search: any) => ({
+          ...search,
+          viewedDaysAgo: this.calculateDaysAgo(search.date || new Date().toISOString())
+        }));
+      }
+    } else {
+      console.warn("localStorage is not available in this environment.");
     }
   }
 
@@ -32,7 +37,9 @@ export class RecentSearchesComponent implements OnInit {
   }
 
   removeSearch(index: number) {
-    this.recentSearches.splice(index, 1);
-    localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
+    if (isPlatformBrowser(this.platformId)) {  // ✅ Prevent server-side execution
+      this.recentSearches.splice(index, 1);
+      localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
+    }
   }
 }
