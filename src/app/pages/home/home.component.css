@@ -1,37 +1,88 @@
 .home-content {
-  position: relative; /* Pour pouvoir positionner les éléments à l’intérieur si besoin */
+  position: relative; /* Pour pouvoir positionner les éléments à l'intérieur si besoin */
   display: flex;
   flex-direction: column; /* Dispose les éléments verticalement */
   min-height: 100vh; /* S'assure que le conteneur prend toute la hauteur de l'écran */
   justify-content: space-between; /* Place le footer en bas si le contenu est insuffisant */
 }
 
-
 .recent-sections-wrapper {
   display: flex;
   justify-content: space-between; /* Espace entre les deux blocs */
   align-items: flex-start;        /* Aligner en haut, par exemple */
-  width: 80%; /* ou 90%, selon la largeur désirée */
+  width: 90%;
   max-width: 1200px; /* Largeur max, à ajuster */
-  margin: 0 auto;    /* Centre horizontalement */
-  
-  /* Pour "remonter" visuellement le conteneur par-dessus la partie basse de la bannière, 
-     vous pouvez utiliser un margin-top négatif si la bannière est haute. Par exemple : */
-  margin-top: 90px; /* Ajustez selon la hauteur de votre bannière */
-  position: relative; /* Pour s’assurer qu’il soit au-dessus si la bannière a un positionnement particulier */
-  z-index: 1;         /* S’il faut qu’il passe par-dessus l’image de fond */
+  margin: 90px auto 0;
+  position: relative; /* Pour s'assurer qu'il soit au-dessus si la bannière a un positionnement particulier */
+  z-index: 1;         /* S'il faut qu'il passe par-dessus l'image de fond */
 }
 
 .spacer {
-  height: 230px; /* Ajustez selon l’espace souhaité */
+  height: 230px; /* Ajustez selon l'espace souhaité */
 }
 
 @media (max-width: 768px) {
-  .growth-section {
-    margin-top: 20px; /* Moins d’espace sur mobile */
+  .recent-sections-wrapper {
+    flex-direction: column;
+    width: 95%;
+    margin-top: 60px;
+    gap: 20px;
   }
-  app-recently-viewed {
-    display: none;
+  
+  /* Make each section in the recent wrapper take full width on mobile */
+  .recent-sections-wrapper > * {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+  
+  .spacer {
+    height: 150px; /* Smaller spacer on mobile */
+  }
+  
+  /* Adjustments for any potential overflow issues */
+  .home-content > * {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Make map section responsive */
+  app-map-section {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  /* Adjust circle images component for mobile */
+  app-deux_circle_image_home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Ensure review section is properly sized */
+  app-review {
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .reviews-container {
+    padding: 20px 15px;
+  }
+  
+  .review-card {
+    width: 100%;
+    margin: 10px 0;
   }
 }
 
+/* For very small screens */
+@media (max-width: 480px) {
+  .recent-sections-wrapper {
+    margin-top: 40px;
+  }
+  
+  .spacer {
+    height: 100px;
+  }
+}

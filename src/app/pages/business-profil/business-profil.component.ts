@@ -10,6 +10,10 @@ import { HttpClient } from '@angular/common/http';
 export class BusinessProfilComponent implements OnInit {
   businessId!: number;
   businessData: any = {};
+  reviews: any[] = [];
+  ratingStats: number[] = [0, 0, 0, 0, 0]; // [1-star, 2-star, 3-star, 4-star, 5-star]
+  totalReviews: number = 0;
+  overallRating: number = 0;
   showPhone: boolean = false;
 
   // Variables pour limiter l'incrémentation par utilisateur
@@ -30,20 +34,66 @@ export class BusinessProfilComponent implements OnInit {
   ngOnInit(): void {
     this.businessId = +this.route.snapshot.paramMap.get('id')!;
     this.fetchBusinessData();
+    this.fetchReviews();
   }
 
   fetchBusinessData(): void {
-    // Exemple d'appel API pour récupérer les données du business
     this.http.get(`http://127.0.0.1:8000/api/business/${this.businessId}/`)
       .subscribe(
         data => {
           this.businessData = data;
-          console.log('Business data:', this.businessData);
+
+          // Vérifier si window et localStorage sont disponibles
+          if (typeof window !== 'undefined' && window.localStorage) {
+            localStorage.setItem('lastViewedBusiness', JSON.stringify({
+              id: this.businessData.id,
+              name: this.businessData.name,
+              subtitle: this.businessData.description, // ou tout autre champ
+              viewedDate: new Date().toISOString() // Pour indiquer la date de consultation
+            }));
+          }
         },
         error => {
           console.error('Erreur lors de la récupération du business:', error);
         }
       );
+}
+
+  fetchReviews(): void {
+    this.http.get<any[]>('http://127.0.0.1:8000/api/reviews/')
+      .subscribe(
+        data => {
+          this.reviews = data.filter(review => review.business === this.businessId);
+          this.calculateRatings();
+        },
+        error => {
+          console.error('Erreur lors de la récupération des avis:', error);
+        }
+      );
+  }
+
+  calculateRatings(): void {
+    this.ratingStats = [0, 0, 0, 0, 0]; // Reset rating counts
+    this.totalReviews = this.reviews.length;
+
+    if (this.totalReviews === 0) {
+      this.overallRating = 0;
+      return;
+    }
+
+    let totalScore = 0;
+
+    this.reviews.forEach(review => {
+      this.ratingStats[review.rating - 1]++; // Increment the respective rating index
+      totalScore += review.rating;
+    });
+
+    this.overallRating = totalScore / this.totalReviews; // Calculate average rating
+  }
+
+  getRatingPercentage(stars: number): string {
+    if (this.totalReviews === 0) return '0%';
+    return `${(this.ratingStats[stars - 1] / this.totalReviews) * 100}%`;
   }
 
   // Fonction qui bascule l'affichage du dropdown

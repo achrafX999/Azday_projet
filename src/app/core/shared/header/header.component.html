@@ -12,17 +12,20 @@
   <!-- Menu Desktop -->
   <div class="menu">
     <ul class="menu-list">
-      <li><a href="#">Speak with an expert</a></li>
+      <li><a routerLink="/contact-us">Speak with an expert</a></li>
       <li><a routerLink="/add-business">List your business</a></li>
     </ul>
   </div>
   
   <!-- Boutons Desktop -->
-  <div class="buttons">
+  <div class="buttons" *ngIf="!isAuthenticated">
     <button class="btn join" routerLink="/sign-up">Join</button>
     <button class="btn login" routerLink="/sign-in">Log in</button>
   </div>
   
-  <!-- Menu Hamburger Mobile -->
+  
+  <div class="logout-container" *ngIf="isAuthenticated">
+    <button class="btn join" (click)="logout()">Logout</button>
+  </div>
   
 </nav>

@@ -188,36 +188,23 @@
     <div class="review-summary">
         <h3>Summary</h3>
         <div class="rating-bars">
-            <div class="rating-row">
-                <span>5</span>
-                <div class="bar"><div class="fill" style="width: 80%;"></div></div>
+          <div class="rating-row" *ngFor="let stars of [5,4,3,2,1]">
+            <span>{{ stars }}</span>
+            <div class="bar">
+              <div class="fill" [style.width]="getRatingPercentage(stars)"></div>
             </div>
-            <div class="rating-row">
-                <span>4</span>
-                <div class="bar"><div class="fill" style="width: 50%;"></div></div>
-            </div>
-            <div class="rating-row">
-                <span>3</span>
-                <div class="bar"><div class="fill" style="width: 30%;"></div></div>
-            </div>
-            <div class="rating-row">
-                <span>2</span>
-                <div class="bar"><div class="fill" style="width: 20%;"></div></div>
-            </div>
-            <div class="rating-row">
-                <span>1</span>
-                <div class="bar"><div class="fill" style="width: 10%;"></div></div>
-            </div>
+          </div>
         </div>
-
+        
         <div class="overall-rating">
-            <span class="rating-value">4.5 ★</span>
-            <span class="review-count">273 Reviews</span>
+          <span class="rating-value">{{ overallRating.toFixed(1) }} ★</span>
+          <span class="review-count">{{ totalReviews }} Reviews</span>
         </div>
-
+        
+<!-- 
         <div class="recommendation">
             <strong>88%</strong> Recommended
-        </div>
+        </div> -->
     </div>
 
     <div class="review-info">
@@ -229,42 +216,30 @@
 </div>
 
 <div class="customer-reviews">
-  <!-- Review 1 -->
-  <div class="review">
-    <div class="review-header">
-      <span class="username">mari0865</span>
-    </div>
-    <div class="review-content">
-      <p>
-        I had a leaking basement and George from Royal Plumbing came right away to my home to investigate. He was very professional and was able to determine the root cause and did an amazing job to resolve the issue. I would strongly recommend him and Royal Plumbing to friends and family, and I will definitely request for their services again should I need it. Thank you very much George!
-      </p>
-    </div>
+  <h2>Customer Reviews</h2>
+
+  <div *ngIf="reviews.length === 0" class="no-reviews">
+    <p>No reviews yet for this business.</p>
   </div>
 
-  <!-- Review 2 -->
-  <div class="review">
+  <div *ngFor="let review of reviews" class="review">
     <div class="review-header">
-      <span class="username">nico3293</span>
+      <span class="username">By {{ review.user_email }}</span>
+      <span class="review-date">{{ review.created_at | date: 'MMMM d, y' }}</span>
     </div>
-    <div class="review-content">
-      <p>
-        Last want to thank Royal Plumbing on their super fast service. Joe was amazingly quick at snaking a pipe in my kitchen. I would and will recommend them to anyone!
-      </p>
-    </div>
-  </div>
 
-  <!-- Review 3 -->
-  <div class="review">
-    <div class="review-header">
-      <span class="username">user1234</span>
+    <!-- Star Rating System -->
+    <div class="stars">
+      <span *ngFor="let star of [].constructor(review.rating)" class="star">★</span>
+      <span *ngFor="let star of [].constructor(5 - review.rating)" class="star empty">★</span>
     </div>
+
     <div class="review-content">
-      <p>
-        The team at Royal Plumbers was very professional. They were on time, installed my new sink, and kept the kitchen area clean. Thanks!
-      </p>
+      <p>{{ review.comment }}</p>
     </div>
   </div>
 </div>
+
 
   
 
